@@ -35,6 +35,7 @@ class AnimeProvider extends ChangeNotifier {
 
     final a = AnimeDetails(
       title: resJson['title'],
+      id: resJson['mal_id'],
       imgUrl: resJson['image_url'],
       rating: resJson['rating'],
       rank: resJson['rank'] as int,
@@ -42,6 +43,9 @@ class AnimeProvider extends ChangeNotifier {
       popularity: resJson['popularity'] as int,
       members: resJson['members'] as int,
       favourites: resJson['favorites'] as int,
+      type: resJson['type'],
+      duration: resJson['duration'],
+      synopsis: resJson['synopsis'],
     );
     detail = a;
     notifyListeners();
