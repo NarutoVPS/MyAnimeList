@@ -32,10 +32,18 @@ class AnimeProvider extends ChangeNotifier {
     String url = 'https://api.jikan.moe/v3/anime/' + id;
     final res = await get(Uri.parse(url));
     final resJson = jsonDecode(res.body);
-    print(resJson);
 
-    detail = AnimeDetails(title: resJson['title']);
-    print(detail.title);
+    final a = AnimeDetails(
+      title: resJson['title'],
+      imgUrl: resJson['image_url'],
+      rating: resJson['rating'],
+      rank: resJson['rank'] as int,
+      score: resJson['score'] as double,
+      popularity: resJson['popularity'] as int,
+      members: resJson['members'] as int,
+      favourites: resJson['favorites'] as int,
+    );
+    detail = a;
     notifyListeners();
   }
 }
