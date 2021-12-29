@@ -3,22 +3,26 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
 import 'package:mal/models/animeDetails.dart';
+import 'characterStaff.dart';
 import 'animeTitle.dart';
 
 class AnimeProvider extends ChangeNotifier {
   final List<AnimeTitle> _upComing = [];
   AnimeDetails _detail = AnimeDetails();
   int _currentSelectedTitle = 0;
+  List<CharacterStaff> _chracterStaffs = [];
   // String _trailerID = '';
 
   get upComingTitles => _upComing;
   get animeDetails => _detail;
   get currentSelectedTitle => _currentSelectedTitle;
+  get CharacterStafflist => _chracterStaffs;
   // get trailerID => _trailerID;
 
   void updateCurrentSelectedTitle(int id) {
     _currentSelectedTitle = id;
     fetchAnimeDetails();
+    fetchCharacterStaffs();
   }
 
   void fetchUpcomingTitles() async {
@@ -73,6 +77,27 @@ class AnimeProvider extends ChangeNotifier {
       _detail.licensors = [resJson['licensors'][0]['name']];
     } catch (e) {
       _detail.licensors = ['Unkonwn'];
+    }
+    notifyListeners();
+  }
+
+  fetchCharacterStaffs() async {
+    String url =
+        'https://api.jikan.moe/v3/anime/$_currentSelectedTitle/characters_staff';
+
+    final res = await get(Uri.parse(url));
+    final resJson = await jsonDecode(res.body);
+
+    _chracterStaffs.clear();
+    if (resJson['characters'].length > 10) {
+      for (int i = 0; i < 10; i++) {
+        _chracterStaffs.add(CharacterStaff(
+          resJson['characters'][i]['name'],
+          resJson['characters'][i]['voice_actors'][0]['name'],
+          resJson['characters'][i]['image_url'],
+          resJson['characters'][i]['voice_actors'][0]['image_url'],
+        ));
+      }
     }
     notifyListeners();
   }
