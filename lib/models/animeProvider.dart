@@ -9,10 +9,12 @@ class AnimeProvider extends ChangeNotifier {
   final List<AnimeTitle> _upComing = [];
   AnimeDetails _detail = AnimeDetails();
   int _currentSelectedTitle = 0;
+  // String _trailerID = '';
 
   get upComingTitles => _upComing;
   get animeDetails => _detail;
   get currentSelectedTitle => _currentSelectedTitle;
+  // get trailerID => _trailerID;
 
   void updateCurrentSelectedTitle(int id) {
     _currentSelectedTitle = id;
@@ -44,7 +46,7 @@ class AnimeProvider extends ChangeNotifier {
     final res = await get(Uri.parse(url));
     final resJson = jsonDecode(res.body);
 
-    final a = AnimeDetails(
+    _detail = AnimeDetails(
       title: resJson['title'],
       id: resJson['mal_id'],
       imgUrl: resJson['image_url'],
@@ -58,8 +60,11 @@ class AnimeProvider extends ChangeNotifier {
       duration: resJson['duration'],
       synopsis: resJson['synopsis'],
       trailerUrl: resJson['trailer_url'] ?? '',
+      source: resJson['source'],
+      aired: resJson['aired']['string'],
+      studio: resJson['studios'][0]['name'] ?? 'Unkonwn',
+      licensors: [resJson['licensors'][0]['name'] ?? 'Unkonwn'],
     );
-    _detail = a;
     notifyListeners();
   }
 }

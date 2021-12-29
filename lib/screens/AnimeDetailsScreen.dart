@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:mal/widgets/AdditionalInfo.dart';
 import 'package:mal/widgets/Trailer.dart';
 import 'package:provider/provider.dart';
 import 'package:expandable_text/expandable_text.dart';
@@ -201,10 +202,11 @@ class _AnimeDetailScreenState extends State<AnimeDetailScreen> {
                       linkColor: Colors.blue,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    // child: Trailer(),
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.all(12.0),
+                  //   child: Trailer(),
+                  // ),
+                  AdditionalInfo(),
                 ],
               ),
             ),
