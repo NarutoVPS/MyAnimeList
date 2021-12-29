@@ -18,6 +18,7 @@ class LightHeading extends StatelessWidget {
       style: TextStyle(
         fontSize: size,
         color: isDark ? Colors.black : Colors.black54,
+        overflow: TextOverflow.ellipsis,
       ),
     );
   }

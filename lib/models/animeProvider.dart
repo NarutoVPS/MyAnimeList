@@ -19,10 +19,10 @@ class AnimeProvider extends ChangeNotifier {
   get CharacterStafflist => _chracterStaffs;
   // get trailerID => _trailerID;
 
-  void updateCurrentSelectedTitle(int id) {
+  void updateCurrentSelectedTitle(int id) async {
     _currentSelectedTitle = id;
-    fetchAnimeDetails();
-    fetchCharacterStaffs();
+    await fetchAnimeDetails();
+    await fetchCharacterStaffs();
   }
 
   void fetchUpcomingTitles() async {
@@ -91,11 +91,29 @@ class AnimeProvider extends ChangeNotifier {
     _chracterStaffs.clear();
     if (resJson['characters'].length > 10) {
       for (int i = 0; i < 10; i++) {
+        String chracterName = resJson['characters'][i]['name'];
+        String actorName;
+        String characterImgUrl = resJson['characters'][i]['image_url'];
+        String actorImgUrl;
+        try {
+          actorImgUrl =
+              resJson['characters'][i]['voice_actors'][0]['image_url'];
+        } catch (e) {
+          actorImgUrl =
+              'https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png';
+        }
+
+        try {
+          actorName = resJson['characters'][i]['voice_actors'][0]['name'];
+        } catch (e) {
+          actorName = '';
+        }
+
         _chracterStaffs.add(CharacterStaff(
-          resJson['characters'][i]['name'],
-          resJson['characters'][i]['voice_actors'][0]['name'],
-          resJson['characters'][i]['image_url'],
-          resJson['characters'][i]['voice_actors'][0]['image_url'],
+          chracterName,
+          actorName,
+          characterImgUrl,
+          actorImgUrl,
         ));
       }
     }

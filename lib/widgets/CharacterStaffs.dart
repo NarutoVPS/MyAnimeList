@@ -27,6 +27,8 @@ class _CharacterStaffsState extends State<CharacterStaffs> {
                 Image.network(
                   lst[i].characterImgUrl,
                   height: 150,
+                  width: 100,
+                  fit: BoxFit.cover,
                 ),
                 const SizedBox(
                   height: 10,
@@ -34,6 +36,8 @@ class _CharacterStaffsState extends State<CharacterStaffs> {
                 Image.network(
                   lst[i].actorImgUrl,
                   height: 150,
+                  width: 100,
+                  fit: BoxFit.cover,
                 ),
               ],
             ),
