@@ -11,7 +11,8 @@ import '../models/animeDetails.dart';
 
 class AnimeDetailScreen extends StatefulWidget {
   final id;
-  const AnimeDetailScreen(this.id);
+  final bool updateData;
+  const AnimeDetailScreen({@required this.id, this.updateData = false});
 
   @override
   State<AnimeDetailScreen> createState() => _AnimeDetailScreenState();
@@ -22,7 +23,10 @@ class _AnimeDetailScreenState extends State<AnimeDetailScreen> {
   @override
   void initState() {
     super.initState();
-    // Provider.of<AnimeProvider>(context, listen: false).fetchAnimeDetails();
+    if (widget.updateData) {
+      Provider.of<AnimeProvider>(context, listen: false)
+          .updateCurrentSelectedTitle(widget.id);
+    }
   }
 
   @override

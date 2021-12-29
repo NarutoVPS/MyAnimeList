@@ -19,10 +19,10 @@ class AnimeProvider extends ChangeNotifier {
   get CharacterStafflist => _chracterStaffs;
   // get trailerID => _trailerID;
 
-  void updateCurrentSelectedTitle(int id) async {
+  void updateCurrentSelectedTitle(int id) {
     _currentSelectedTitle = id;
-    await fetchAnimeDetails();
-    await fetchCharacterStaffs();
+    fetchAnimeDetails();
+    fetchCharacterStaffs();
   }
 
   void fetchUpcomingTitles() async {
@@ -55,8 +55,8 @@ class AnimeProvider extends ChangeNotifier {
       id: resJson['mal_id'],
       imgUrl: resJson['image_url'],
       rating: resJson['rating'],
-      rank: resJson['rank'] as int,
-      score: resJson['score'] as double,
+      rank: resJson['rank'] ?? 0,
+      score: resJson['score'] ?? 0.0,
       popularity: resJson['popularity'] as int,
       members: resJson['members'] as int,
       favourites: resJson['favorites'] as int,

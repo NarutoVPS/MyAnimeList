@@ -5,6 +5,7 @@ import '../models/animeProvider.dart';
 import '../models/animeTitle.dart';
 import '../widgets/AnimeTile.dart';
 import 'AnimeDetailsScreen.dart';
+import './SearchScreen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -26,7 +27,7 @@ class _HomePageState extends State<HomePage> {
         .updateCurrentSelectedTitle(id);
     Navigator.of(context).push(MaterialPageRoute(
         builder: (context) => AnimeDetailScreen(
-            Provider.of<AnimeProvider>(context, listen: false)
+            id: Provider.of<AnimeProvider>(context, listen: false)
                 .currentSelectedTitle)));
   }
 
@@ -72,18 +73,24 @@ class _HomePageState extends State<HomePage> {
                   const EdgeInsets.only(top: 2, bottom: 2, left: 10, right: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
-                  Icon(
+                children: [
+                  const Icon(
                     Icons.home_outlined,
                     size: 40,
                     color: Colors.black54,
                   ),
-                  Icon(
-                    Icons.search_outlined,
-                    size: 40,
-                    color: Colors.black54,
+                  GestureDetector(
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SearchScreen())),
+                    child: const Icon(
+                      Icons.search_outlined,
+                      size: 40,
+                      color: Colors.black54,
+                    ),
                   ),
-                  Icon(
+                  const Icon(
                     Icons.list_alt_outlined,
                     color: Colors.black54,
                     size: 40,
