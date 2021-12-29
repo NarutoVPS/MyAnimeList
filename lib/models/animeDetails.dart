@@ -6,7 +6,7 @@ class AnimeDetails {
   String imgUrl;
   double? score;
   int? rank;
-  String? trailerUrl;
+  String trailerUrl;
   String type;
   String? status;
   String duration;

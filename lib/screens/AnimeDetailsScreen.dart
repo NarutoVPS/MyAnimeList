@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:mal/widgets/Trailer.dart';
 import 'package:provider/provider.dart';
 import 'package:expandable_text/expandable_text.dart';
 
@@ -26,7 +27,6 @@ class _AnimeDetailScreenState extends State<AnimeDetailScreen> {
   @override
   Widget build(BuildContext context) {
     details = Provider.of<AnimeProvider>(context).detail;
-    print(details.synopsis);
     return details.title == ''
         ? const Scaffold()
         : Scaffold(
@@ -67,7 +67,6 @@ class _AnimeDetailScreenState extends State<AnimeDetailScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
-                              // color: Colors.white,
                               margin: const EdgeInsets.all(12.0),
                               padding: const EdgeInsets.all(10.0),
                               decoration: BoxDecoration(
@@ -89,13 +88,16 @@ class _AnimeDetailScreenState extends State<AnimeDetailScreen> {
                                   Column(
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
-                                      const Text('Score'),
+                                      const Text(
+                                        'Score',
+                                        style: TextStyle(color: Colors.white70),
+                                      ),
                                       Text(
                                         '⭐ ' + details.score.toString(),
                                         style: const TextStyle(
                                           fontSize: 22,
                                           fontWeight: FontWeight.bold,
-                                          color: Colors.white,
+                                          color: Colors.white70,
                                         ),
                                       ),
                                     ],
@@ -177,8 +179,7 @@ class _AnimeDetailScreenState extends State<AnimeDetailScreen> {
                   Container(
                     padding: const EdgeInsets.all(8.0),
                     margin: const EdgeInsets.only(top: 10, bottom: 10),
-                    // height: 20.0,
-                    color: Colors.grey,
+                    color: Colors.blue,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -197,7 +198,14 @@ class _AnimeDetailScreenState extends State<AnimeDetailScreen> {
                       maxLines: 4,
                       linkColor: Colors.blue,
                     ),
-                  )
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Trailer(RegExp(r"embed\/.{11}")
+                        .stringMatch(details.trailerUrl)
+                        .toString()
+                        .split('/')[1]),
+                  ),
                 ],
               ),
             ),

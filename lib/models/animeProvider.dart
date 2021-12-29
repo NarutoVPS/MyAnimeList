@@ -46,6 +46,7 @@ class AnimeProvider extends ChangeNotifier {
       type: resJson['type'],
       duration: resJson['duration'],
       synopsis: resJson['synopsis'],
+      trailerUrl: resJson['trailer_url'],
     );
     detail = a;
     notifyListeners();
