@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AnimeTitle {
-  int? id;
+  int id;
   String title;
   int? rank;
   String? url;
@@ -10,7 +10,7 @@ class AnimeTitle {
   String? startDate;
 
   AnimeTitle(
-      {@required this.id,
+      {this.id = 0,
       this.title = '',
       @required this.rank,
       @required this.url,

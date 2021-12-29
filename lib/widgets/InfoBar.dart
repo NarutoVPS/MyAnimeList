@@ -14,11 +14,22 @@ class InfoBar extends StatelessWidget {
       children: [
         Row(
           children: [
-            IconButton(onPressed: () {}, icon: const Icon(Icons.people)),
-            Text(members.toString()),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.people_alt_outlined),
+              color: Colors.black54,
+            ),
+            Text(
+              members.toString(),
+              style: const TextStyle(color: Colors.black87),
+            ),
           ],
         ),
-        IconButton(onPressed: () {}, icon: const Icon(Icons.favorite))
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.favorite_border_outlined),
+          color: Colors.black54,
+        )
       ],
     );
   }

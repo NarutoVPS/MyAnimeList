@@ -20,13 +20,12 @@ class _AnimeDetailScreenState extends State<AnimeDetailScreen> {
   @override
   void initState() {
     super.initState();
-    Provider.of<AnimeProvider>(context, listen: false)
-        .fetchAnimeDetails(widget.id.toString());
+    // Provider.of<AnimeProvider>(context, listen: false).fetchAnimeDetails();
   }
 
   @override
   Widget build(BuildContext context) {
-    details = Provider.of<AnimeProvider>(context).detail;
+    details = Provider.of<AnimeProvider>(context).animeDetails;
     return details.title == ''
         ? const Scaffold()
         : Scaffold(
@@ -169,17 +168,20 @@ class _AnimeDetailScreenState extends State<AnimeDetailScreen> {
                       ],
                     ),
                   ),
-                  Text(
-                    details.title,
-                    style: const TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Text(
+                      details.title,
+                      style: const TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                          overflow: TextOverflow.ellipsis),
                     ),
                   ),
                   Container(
                     padding: const EdgeInsets.all(8.0),
                     margin: const EdgeInsets.only(top: 10, bottom: 10),
-                    color: Colors.blue,
+                    color: Colors.black12,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -201,10 +203,7 @@ class _AnimeDetailScreenState extends State<AnimeDetailScreen> {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(12.0),
-                    child: Trailer(RegExp(r"embed\/.{11}")
-                        .stringMatch(details.trailerUrl)
-                        .toString()
-                        .split('/')[1]),
+                    // child: Trailer(),
                   ),
                 ],
               ),

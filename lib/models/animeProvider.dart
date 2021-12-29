@@ -6,17 +6,27 @@ import 'package:mal/models/animeDetails.dart';
 import 'animeTitle.dart';
 
 class AnimeProvider extends ChangeNotifier {
-  List<AnimeTitle> upComing = [];
-  AnimeDetails detail = AnimeDetails();
+  final List<AnimeTitle> _upComing = [];
+  AnimeDetails _detail = AnimeDetails();
+  int _currentSelectedTitle = 0;
+
+  get upComingTitles => _upComing;
+  get animeDetails => _detail;
+  get currentSelectedTitle => _currentSelectedTitle;
+
+  void updateCurrentSelectedTitle(int id) {
+    _currentSelectedTitle = id;
+    fetchAnimeDetails();
+  }
 
   void fetchUpcomingTitles() async {
     String url = 'https://api.jikan.moe/v3/top/anime/1/airing';
     final res = await get(Uri.parse(url));
     final resJson = jsonDecode(res.body)['top'] as List;
 
-    upComing.clear();
+    _upComing.clear();
     for (var element in resJson) {
-      upComing.add(AnimeTitle(
+      _upComing.add(AnimeTitle(
           id: element['mal_id'],
           title: element['title'],
           rank: element['rank'],
@@ -28,8 +38,9 @@ class AnimeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  fetchAnimeDetails(String id) async {
-    String url = 'https://api.jikan.moe/v3/anime/' + id;
+  fetchAnimeDetails() async {
+    String url =
+        'https://api.jikan.moe/v3/anime/' + _currentSelectedTitle.toString();
     final res = await get(Uri.parse(url));
     final resJson = jsonDecode(res.body);
 
@@ -46,9 +57,9 @@ class AnimeProvider extends ChangeNotifier {
       type: resJson['type'],
       duration: resJson['duration'],
       synopsis: resJson['synopsis'],
-      trailerUrl: resJson['trailer_url'],
+      trailerUrl: resJson['trailer_url'] ?? '',
     );
-    detail = a;
+    _detail = a;
     notifyListeners();
   }
 }

@@ -21,10 +21,19 @@ class _HomePageState extends State<HomePage> {
     Provider.of<AnimeProvider>(context, listen: false).fetchUpcomingTitles();
   }
 
+  void onTitleClick(id) {
+    Provider.of<AnimeProvider>(context, listen: false)
+        .updateCurrentSelectedTitle(id);
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => AnimeDetailScreen(
+            Provider.of<AnimeProvider>(context, listen: false)
+                .currentSelectedTitle)));
+  }
+
   @override
   Widget build(BuildContext context) {
     List<AnimeTitle> upComingAnimes =
-        Provider.of<AnimeProvider>(context).upComing;
+        Provider.of<AnimeProvider>(context).upComingTitles;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xff2e51a2),
@@ -49,9 +58,7 @@ class _HomePageState extends State<HomePage> {
                   itemCount: upComingAnimes.length,
                   itemBuilder: (context, i) {
                     return GestureDetector(
-                      onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) =>
-                              AnimeDetailScreen(upComingAnimes[i].id))),
+                      onTap: () => onTitleClick(upComingAnimes[i].id),
                       child: AnimeTile(
                           upComingAnimes[i].title,
                           upComingAnimes[i].imgUrl,
@@ -69,13 +76,16 @@ class _HomePageState extends State<HomePage> {
                   Icon(
                     Icons.home_outlined,
                     size: 40,
+                    color: Colors.black54,
                   ),
                   Icon(
                     Icons.search_outlined,
                     size: 40,
+                    color: Colors.black54,
                   ),
                   Icon(
                     Icons.list_alt_outlined,
+                    color: Colors.black54,
                     size: 40,
                   )
                 ],

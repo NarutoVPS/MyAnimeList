@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 class AnimeDetails {
-  int? id;
+  int id;
   String title;
   String imgUrl;
   double? score;

@@ -15,7 +15,7 @@ class AnimeTile extends StatelessWidget {
     return Container(
       color: Colors.white70,
       padding: const EdgeInsets.only(left: 8),
-      height: 100,
+      height: 90,
       child: Column(
         children: [
           Row(
@@ -23,7 +23,7 @@ class AnimeTile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CircleAvatar(
-                radius: 40,
+                radius: 35,
                 backgroundImage: NetworkImage(imgUrl),
               ),
               Expanded(
@@ -35,9 +35,9 @@ class AnimeTile extends StatelessWidget {
                       Text(
                         title,
                         style: const TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 15,
-                        ),
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16,
+                            color: Colors.black87),
                         overflow: TextOverflow.ellipsis,
                       ),
                       InfoBar(members, startDate),
