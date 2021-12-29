@@ -62,9 +62,18 @@ class AnimeProvider extends ChangeNotifier {
       trailerUrl: resJson['trailer_url'] ?? '',
       source: resJson['source'],
       aired: resJson['aired']['string'],
-      studio: resJson['studios'][0]['name'] ?? 'Unkonwn',
-      licensors: [resJson['licensors'][0]['name'] ?? 'Unkonwn'],
     );
+    try {
+      _detail.studio = resJson['studios'][0]['name'];
+    } catch (e) {
+      _detail.studio = 'Unkonwn';
+    }
+
+    try {
+      _detail.licensors = [resJson['licensors'][0]['name']];
+    } catch (e) {
+      _detail.licensors = ['Unkonwn'];
+    }
     notifyListeners();
   }
 }
