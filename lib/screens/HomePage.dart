@@ -38,7 +38,12 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xff2e51a2),
-        title: const Text('MAL'),
+        title: const Text(
+          'MAL',
+          style: TextStyle(
+            fontWeight: FontWeight.w900,
+          ),
+        ),
         centerTitle: true,
         actions: [
           IconButton(

@@ -36,7 +36,10 @@ class _AnimeDetailScreenState extends State<AnimeDetailScreen> {
         ? const Scaffold()
         : Scaffold(
             appBar: AppBar(
-              title: const Text('MAL'),
+              title: const Text(
+                'MAL',
+                style: TextStyle(fontWeight: FontWeight.w900),
+              ),
               elevation: 0,
               centerTitle: true,
               backgroundColor: Theme.of(context).primaryColor,

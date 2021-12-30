@@ -10,8 +10,11 @@ class SearchBar extends StatelessWidget {
       height: 40,
       decoration: BoxDecoration(
           color: Colors.white, borderRadius: BorderRadius.circular(5)),
-      child: const TextField(
-        decoration: InputDecoration(
+      child: TextField(
+        onSubmitted: (String query) {
+          print(query);
+        },
+        decoration: const InputDecoration(
             prefixIcon: Icon(Icons.search),
             hintText: 'Search...',
             border: InputBorder.none),

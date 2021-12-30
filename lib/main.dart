@@ -28,14 +28,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        fontFamily: 'Poppins',
         primaryColor: const Color(0xff2e51a2),
-        textTheme: const TextTheme(
-          headline2: TextStyle(
-            fontSize: 16.0,
-            fontWeight: FontWeight.bold,
-            color: Colors.black87,
-          ),
-        ),
       ),
       home: const HomePage(),
     );

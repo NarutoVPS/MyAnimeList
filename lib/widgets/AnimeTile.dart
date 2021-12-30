@@ -35,9 +35,9 @@ class AnimeTile extends StatelessWidget {
                       Text(
                         title,
                         style: const TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 16,
-                            color: Colors.black87),
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16,
+                        ),
                         overflow: TextOverflow.ellipsis,
                       ),
                       InfoBar(members, startDate),
@@ -48,7 +48,7 @@ class AnimeTile extends StatelessWidget {
             ],
           ),
           const Divider(
-            color: Colors.black87,
+            color: Colors.black,
           ),
         ],
       ),
