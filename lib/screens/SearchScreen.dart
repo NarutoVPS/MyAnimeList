@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mal/widgets/SearchBar.dart';
 import 'package:provider/provider.dart';
 
 import 'package:mal/widgets/TopTen.dart';
@@ -24,10 +25,8 @@ class _SearchScreenState extends State<SearchScreen> {
     // print(Provider.of<TopAnimeProvider>(context, listen: false).t);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('MAL'),
-        centerTitle: true,
         backgroundColor: Theme.of(context).primaryColor,
-        elevation: 0,
+        title: const SearchBar(),
       ),
       body: SingleChildScrollView(
         child: Column(
