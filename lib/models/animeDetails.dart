@@ -19,13 +19,13 @@ class AnimeDetails {
   int? members;
   int? favourites;
   String synopsis;
-  List<String>? licensors;
+  List<String> licensors;
   String studio;
 
   AnimeDetails({
     this.id = 0,
     this.title = '',
-    this.imgUrl = '',
+    this.imgUrl = 'https://miro.medium.com/max/700/0*H3jZONKqRuAAeHnG.jpg',
     this.score = 0,
     this.rank = 0,
     this.trailerUrl = '',
@@ -36,12 +36,12 @@ class AnimeDetails {
     this.source = '',
     this.airing = false,
     this.aired = '',
-    this.rating,
-    this.popularity,
-    this.members,
-    this.favourites,
+    this.rating = '',
+    this.popularity = 0,
+    this.members = 0,
+    this.favourites = 0,
     this.synopsis = '',
-    this.licensors,
+    this.licensors = const ['NA'],
     this.studio = '',
   });
 }

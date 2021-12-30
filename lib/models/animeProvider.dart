@@ -91,7 +91,7 @@ class AnimeProvider extends ChangeNotifier {
     _chracterStaffs.clear();
     if (resJson['characters'].length > 10) {
       for (int i = 0; i < 10; i++) {
-        String chracterName = resJson['characters'][i]['name'];
+        String characterName = resJson['characters'][i]['name'];
         String actorName;
         String characterImgUrl = resJson['characters'][i]['image_url'];
         String actorImgUrl;
@@ -110,10 +110,10 @@ class AnimeProvider extends ChangeNotifier {
         }
 
         _chracterStaffs.add(CharacterStaff(
-          chracterName,
-          actorName,
-          characterImgUrl,
-          actorImgUrl,
+          characterName: characterName,
+          actorName: actorName,
+          characterImgUrl: characterImgUrl,
+          actorImgUrl: actorImgUrl,
         ));
       }
     }
