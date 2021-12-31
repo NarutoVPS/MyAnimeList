@@ -12,6 +12,7 @@ class SearchProvider extends ChangeNotifier {
 
   void updateQuery(String newQuery) {
     _query = newQuery;
+    search();
   }
 
   void search() async {
@@ -19,13 +20,17 @@ class SearchProvider extends ChangeNotifier {
     final res = await get(Uri.parse(url));
     final resJson = jsonDecode(res.body);
 
-    if (resJson != null) {
-      for (var curr in resJson['results']) {
-        _searchResults.add(AnimeTitle(
-          id: curr['mal_id'],
-          title: curr['title'],
-        ));
-      }
+    // if (resJson != null) {
+    for (var curr in resJson['results']) {
+      _searchResults.add(AnimeTitle(
+        id: curr['mal_id'] ?? 0,
+        title: curr['title'] ?? 'NA',
+        imgUrl: curr['image_url'] ?? '',
+        members: curr['members'] ?? 0,
+        type: curr['type'] ?? 'NA',
+      ));
     }
+    // }
+    notifyListeners();
   }
 }
