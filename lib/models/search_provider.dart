@@ -21,6 +21,7 @@ class SearchProvider extends ChangeNotifier {
     final resJson = jsonDecode(res.body);
 
     // if (resJson != null) {
+    _searchResults.clear();
     for (var curr in resJson['results']) {
       _searchResults.add(AnimeTitle(
         id: curr['mal_id'] ?? 0,

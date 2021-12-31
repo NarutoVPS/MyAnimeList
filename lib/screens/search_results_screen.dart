@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mal/screens/anime_detail_screen.dart';
 import 'package:mal/widgets/custom_text.dart';
 import 'package:provider/provider.dart';
 
@@ -20,39 +21,69 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
         title: const SearchBar(),
+        elevation: 0,
       ),
       body: ListView.builder(
           itemCount: results.length,
           itemBuilder: (context, i) {
-            return Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Image.network(
-                  results[i].imgUrl,
-                  height: 150,
-                  width: 100,
-                ),
-                Flexible(
-                  child: Container(
-                    padding: const EdgeInsets.all(12.0),
-                    height: 150,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            return GestureDetector(
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (_) => AnimeDetailScreen(
+                            id: results[i].id,
+                            updateData: true,
+                          ))),
+              child: Container(
+                margin: const EdgeInsets.only(left: 8.0),
+                color: Colors.white,
+                child: Column(
+                  children: [
+                    Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            CustomText(results[i].title, 15, true),
-                            CustomText(results[i].type, 14, true),
-                          ],
+                        Image.network(
+                          results[i].imgUrl,
+                          height: 150,
+                          width: 100,
+                          fit: BoxFit.cover,
                         ),
-                        CustomText(results[i].members.toString(), 15, true),
+                        Flexible(
+                          child: Container(
+                            padding: const EdgeInsets.all(12.0),
+                            height: 150,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    CustomText(results[i].title, 15, true),
+                                    CustomText(results[i].type, 14, true),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    CustomText(results[i].members.toString(),
+                                        15, true),
+                                    const Icon(Icons.favorite_outline),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                       ],
                     ),
-                  ),
+                    const Divider(
+                      color: Colors.black,
+                    ),
+                  ],
                 ),
-              ],
+              ),
             );
           }),
     );
