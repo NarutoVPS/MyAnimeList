@@ -24,15 +24,23 @@ class TopAnimeProvider extends ChangeNotifier {
   void fetchTopList(type, data) async {
     String url = 'https://api.jikan.moe/v3/top/anime/1/$type';
     final res = await get(Uri.parse(url));
-    final resJson = jsonDecode(res.body)['top'] as List;
+    final resJson = jsonDecode(res.body)['top'] ?? [];
 
     data.clear();
-    for (int i = 0; i < 10; i++) {
-      data.add(BasicAnimeInfo(
-        resJson[i]['mal_id'],
-        resJson[i]['title'],
-        resJson[i]['image_url'],
-      ));
+    if (resJson != null) {
+      int n = 0;
+      if (resJson.length > 10) {
+        n = 10;
+      } else {
+        n = resJson.length;
+      }
+      for (int i = 0; i < n; i++) {
+        data.add(BasicAnimeInfo(
+          resJson[i]['mal_id'],
+          resJson[i]['title'],
+          resJson[i]['image_url'],
+        ));
+      }
     }
     notifyListeners();
   }
