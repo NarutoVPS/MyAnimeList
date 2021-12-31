@@ -11,13 +11,11 @@ class AnimeProvider extends ChangeNotifier {
   AnimeDetails _detail = AnimeDetails();
   int _currentSelectedTitle = 0;
   final List<CharacterStaff> _chracterStaffs = [];
-  // String _trailerID = '';
 
   get upComingTitles => _upComing;
   get animeDetails => _detail;
   get currentSelectedTitle => _currentSelectedTitle;
   get characterStafflist => _chracterStaffs;
-  // get trailerID => _trailerID;
 
   void updateCurrentSelectedTitle(int id) {
     _currentSelectedTitle = id;
@@ -51,21 +49,21 @@ class AnimeProvider extends ChangeNotifier {
     final resJson = jsonDecode(res.body);
 
     _detail = AnimeDetails(
-      title: resJson['title'],
-      id: resJson['mal_id'],
+      title: resJson['title'] ?? '',
+      id: resJson['mal_id'] ?? 0,
       imgUrl: resJson['image_url'],
-      rating: resJson['rating'],
+      rating: resJson['rating'] ?? 0,
       rank: resJson['rank'] ?? 0,
       score: resJson['score'] ?? 0.0,
-      popularity: resJson['popularity'] as int,
-      members: resJson['members'] as int,
-      favourites: resJson['favorites'] as int,
-      type: resJson['type'],
-      duration: resJson['duration'],
-      synopsis: resJson['synopsis'],
+      popularity: resJson['popularity'] ?? 0,
+      members: resJson['members'] ?? 0,
+      favourites: resJson['favorites'] ?? 0,
+      type: resJson['type'] ?? 'NA',
+      duration: resJson['duration'] ?? '-',
+      synopsis: resJson['synopsis'] ?? '...',
       trailerUrl: resJson['trailer_url'] ?? '',
-      source: resJson['source'],
-      aired: resJson['aired']['string'],
+      source: resJson['source'] ?? '',
+      aired: resJson['aired']['string'] ?? '',
     );
     try {
       _detail.studio = resJson['studios'][0]['name'];
