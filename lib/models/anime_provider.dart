@@ -87,8 +87,14 @@ class AnimeProvider extends ChangeNotifier {
     final resJson = await jsonDecode(res.body);
 
     _chracterStaffs.clear();
-    if (resJson['characters'].length > 10) {
-      for (int i = 0; i < 10; i++) {
+    if (resJson['characters'] != null) {
+      int n;
+      if (resJson['characters'].length > 10) {
+        n = 10;
+      } else {
+        n = resJson['characters'].length;
+      }
+      for (int i = 0; i < n; i++) {
         String characterName = resJson['characters'][i]['name'];
         String actorName;
         String characterImgUrl = resJson['characters'][i]['image_url'];
