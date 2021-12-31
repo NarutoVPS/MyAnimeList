@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mal/widgets/nav_menu.dart';
 import 'package:mal/widgets/search_bar.dart';
 import 'package:provider/provider.dart';
 
@@ -27,27 +28,35 @@ class _SearchScreenState extends State<SearchScreen> {
         backgroundColor: Theme.of(context).primaryColor,
         title: const SearchBar(),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            TopTen(Provider.of<TopAnimeProvider>(context).topUpcoming,
-                'Top 10 UpComing'),
-            const SizedBox(
-              height: 10,
+      body: Column(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  TopTen(Provider.of<TopAnimeProvider>(context).topUpcoming,
+                      'Top 10 UpComing'),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  TopTen(Provider.of<TopAnimeProvider>(context).topAiring,
+                      'Top 10 Airing'),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  TopTen(Provider.of<TopAnimeProvider>(context).topMovie,
+                      'Top 10 Movie'),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  TopTen(Provider.of<TopAnimeProvider>(context).topOva,
+                      'Top 10 Ova'),
+                ],
+              ),
             ),
-            TopTen(Provider.of<TopAnimeProvider>(context).topAiring,
-                'Top 10 Airing'),
-            const SizedBox(
-              height: 10,
-            ),
-            TopTen(Provider.of<TopAnimeProvider>(context).topMovie,
-                'Top 10 Movie'),
-            const SizedBox(
-              height: 10,
-            ),
-            TopTen(Provider.of<TopAnimeProvider>(context).topOva, 'Top 10 Ova'),
-          ],
-        ),
+          ),
+          const NavMenu(),
+        ],
       ),
     );
   }

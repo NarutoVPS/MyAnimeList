@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-
 import 'package:provider/provider.dart';
+
 import '../models/anime_provider.dart';
 import '../models/anime_title.dart';
 import '../widgets/anime_tile.dart';
 import 'anime_detail_screen.dart';
-import './search_screen.dart';
+import 'package:mal/widgets/nav_menu.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -72,36 +72,7 @@ class _HomePageState extends State<HomePage> {
                     );
                   }),
             ),
-            Container(
-              margin:
-                  const EdgeInsets.only(top: 2, bottom: 2, left: 10, right: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  const Icon(
-                    Icons.home_outlined,
-                    size: 40,
-                    color: Colors.black54,
-                  ),
-                  GestureDetector(
-                    onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const SearchScreen())),
-                    child: const Icon(
-                      Icons.search_outlined,
-                      size: 40,
-                      color: Colors.black54,
-                    ),
-                  ),
-                  const Icon(
-                    Icons.list_alt_outlined,
-                    color: Colors.black54,
-                    size: 40,
-                  )
-                ],
-              ),
-            ),
+            const NavMenu(),
           ],
         ),
       ),
