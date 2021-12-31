@@ -20,6 +20,7 @@ class AdditionalInfo extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const CustomText('Source', 14, false),
                   CustomText(
@@ -61,7 +62,6 @@ class AdditionalInfo extends StatelessWidget {
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               const CustomText('Season\n', 14, false),
               const SizedBox(
