@@ -14,7 +14,17 @@ class _NavMenuState extends State<NavMenu> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 2, bottom: 2, left: 10, right: 10),
+      padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black,
+            blurRadius: 5.0,
+            offset: Offset(1.0, 1.0),
+          ),
+        ],
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
