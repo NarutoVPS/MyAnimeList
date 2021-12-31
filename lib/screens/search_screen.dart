@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mal/widgets/SearchBar.dart';
+import 'package:mal/widgets/search_bar.dart';
 import 'package:provider/provider.dart';
 
-import 'package:mal/widgets/TopTen.dart';
-import '../models/topAnimeProvider.dart';
+import 'package:mal/widgets/top_ten.dart';
+import '../models/top_anime_provider.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({Key? key}) : super(key: key);
@@ -15,7 +15,6 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     Provider.of<TopAnimeProvider>(context, listen: false).fetchAll();
   }

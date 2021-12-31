@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
-import '../models/animeProvider.dart';
-import '../models/animeTitle.dart';
-import '../widgets/AnimeTile.dart';
-import 'AnimeDetailsScreen.dart';
-import './SearchScreen.dart';
+import '../models/anime_provider.dart';
+import '../models/anime_title.dart';
+import '../widgets/anime_tile.dart';
+import 'anime_detail_screen.dart';
+import './search_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -17,7 +17,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     Provider.of<AnimeProvider>(context, listen: false).fetchUpcomingTitles();
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../models/animeProvider.dart';
+import '../models/anime_provider.dart';
 
 class CharacterStaffs extends StatefulWidget {
   const CharacterStaffs({Key? key}) : super(key: key);
@@ -12,7 +12,7 @@ class CharacterStaffs extends StatefulWidget {
 class _CharacterStaffsState extends State<CharacterStaffs> {
   @override
   Widget build(BuildContext context) {
-    final lst = Provider.of<AnimeProvider>(context).CharacterStafflist;
+    final lst = Provider.of<AnimeProvider>(context).characterStafflist;
     return Container(
       padding: const EdgeInsets.only(left: 7, top: 12, bottom: 12),
       height: 500,

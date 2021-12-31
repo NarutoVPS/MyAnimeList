@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mal/widgets/InfoBar.dart';
+import 'package:mal/widgets/infobar.dart';
 
 class AnimeTile extends StatelessWidget {
-  final title;
-  final imgUrl;
-  final members;
-  final startDate;
+  final String title;
+  final String imgUrl;
+  final int members;
+  final String startDate;
 
   // ignore: use_key_in_widget_constructors
   const AnimeTile(this.title, this.imgUrl, this.members, this.startDate);

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../models/animeProvider.dart';
-import '../widgets/LightHeading.dart';
+import '../models/anime_provider.dart';
+import 'custom_text.dart';
 
 class AdditionalInfo extends StatelessWidget {
   const AdditionalInfo({Key? key}) : super(key: key);
@@ -21,8 +21,8 @@ class AdditionalInfo extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  const LightHeading('Source', 14, false),
-                  LightHeading(
+                  const CustomText('Source', 14, false),
+                  CustomText(
                       Provider.of<AnimeProvider>(context).animeDetails.source,
                       15,
                       true),
@@ -34,8 +34,8 @@ class AdditionalInfo extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const LightHeading('Studio', 14, false),
-                  LightHeading(
+                  const CustomText('Studio', 14, false),
+                  CustomText(
                       Provider.of<AnimeProvider>(context).animeDetails.studio,
                       15,
                       true),
@@ -47,8 +47,8 @@ class AdditionalInfo extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const LightHeading('Rating', 14, false),
-                  LightHeading(
+                  const CustomText('Rating', 14, false),
+                  CustomText(
                       Provider.of<AnimeProvider>(context).animeDetails.rating,
                       15,
                       true),
@@ -63,15 +63,15 @@ class AdditionalInfo extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const LightHeading('Season\n', 14, false),
+              const CustomText('Season\n', 14, false),
               const SizedBox(
                 height: 10,
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const LightHeading('Aired', 14, false),
-                  LightHeading(
+                  const CustomText('Aired', 14, false),
+                  CustomText(
                       Provider.of<AnimeProvider>(context).animeDetails.aired,
                       15,
                       true),
@@ -83,8 +83,8 @@ class AdditionalInfo extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const LightHeading('Licensors', 14, false),
-                  LightHeading(
+                  const CustomText('Licensors', 14, false),
+                  CustomText(
                       Provider.of<AnimeProvider>(context)
                           .animeDetails
                           .licensors[0],

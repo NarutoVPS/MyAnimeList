@@ -12,7 +12,7 @@ class SearchBar extends StatelessWidget {
           color: Colors.white, borderRadius: BorderRadius.circular(5)),
       child: TextField(
         onSubmitted: (String query) {
-          print(query);
+          // print(query);
         },
         decoration: const InputDecoration(
             prefixIcon: Icon(Icons.search),

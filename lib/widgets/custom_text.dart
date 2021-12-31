@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class LightHeading extends StatelessWidget {
+class CustomText extends StatelessWidget {
   final String text;
   final double size;
   final bool isDark;
 
-  const LightHeading(
+  const CustomText(
     this.text,
     this.size,
     this.isDark,

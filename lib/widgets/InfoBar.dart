@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class InfoBar extends StatelessWidget {
-  final members;
-  final startDate;
+  final int members;
+  final String startDate;
 
-  InfoBar(this.members, this.startDate);
+  const InfoBar(this.members, this.startDate);
 
   @override
   Widget build(BuildContext context) {

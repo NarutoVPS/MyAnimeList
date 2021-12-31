@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import 'package:mal/screens/AnimeDetailsScreen.dart';
-import 'package:mal/widgets/LightHeading.dart';
-import '../models/animeProvider.dart';
-import '../models/topAnimeProvider.dart';
+import 'package:mal/screens/anime_detail_screen.dart';
+import 'package:mal/widgets/custom_text.dart';
+import '../models/top_anime_provider.dart';
 
 class TopTen extends StatelessWidget {
-  List<BasicAnimeInfo> top;
+  final List<BasicAnimeInfo> top;
   final String category;
 
   TopTen(this.top, this.category);
@@ -19,7 +17,7 @@ class TopTen extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(left: 8, top: 8),
-          child: LightHeading(category, 16, false),
+          child: CustomText(category, 16, false),
         ),
         Container(
           height: 200,
@@ -50,7 +48,7 @@ class TopTen extends StatelessWidget {
                         const SizedBox(
                           height: 4,
                         ),
-                        LightHeading(top[i].title, 12, false),
+                        CustomText(top[i].title, 12, false),
                       ],
                     ),
                   ),

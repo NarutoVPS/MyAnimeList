@@ -2,21 +2,21 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
-import 'package:mal/models/animeDetails.dart';
-import 'characterStaff.dart';
-import 'animeTitle.dart';
+import 'package:mal/models/anime_details_model.dart';
+import 'character_staff_model.dart';
+import 'anime_title.dart';
 
 class AnimeProvider extends ChangeNotifier {
   final List<AnimeTitle> _upComing = [];
   AnimeDetails _detail = AnimeDetails();
   int _currentSelectedTitle = 0;
-  List<CharacterStaff> _chracterStaffs = [];
+  final List<CharacterStaff> _chracterStaffs = [];
   // String _trailerID = '';
 
   get upComingTitles => _upComing;
   get animeDetails => _detail;
   get currentSelectedTitle => _currentSelectedTitle;
-  get CharacterStafflist => _chracterStaffs;
+  get characterStafflist => _chracterStaffs;
   // get trailerID => _trailerID;
 
   void updateCurrentSelectedTitle(int id) {

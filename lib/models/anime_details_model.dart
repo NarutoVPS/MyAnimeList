@@ -1,5 +1,3 @@
-import 'package:flutter/cupertino.dart';
-
 class AnimeDetails {
   int id;
   String title;
@@ -16,7 +14,7 @@ class AnimeDetails {
   String aired;
   String? rating;
   int? popularity;
-  int? members;
+  int members;
   int? favourites;
   String synopsis;
   List<String> licensors;

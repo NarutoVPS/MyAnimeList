@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mal/models/topAnimeProvider.dart';
+import 'package:mal/models/top_anime_provider.dart';
 import 'package:provider/provider.dart';
 
-import 'package:mal/screens/HomePage.dart';
+import 'package:mal/screens/homepage.dart';
 
-import 'models/animeProvider.dart';
+import 'models/anime_provider.dart';
 
 void main(List<String> args) {
   runApp(MultiProvider(

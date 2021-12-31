@@ -1,18 +1,16 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:mal/widgets/AdditionalInfo.dart';
-import 'package:mal/widgets/CharacterStaffs.dart';
-import 'package:mal/widgets/Trailer.dart';
 import 'package:provider/provider.dart';
 import 'package:expandable_text/expandable_text.dart';
 
-import '../models/animeProvider.dart';
-import '../models/animeDetails.dart';
+import 'package:mal/widgets/additional_info.dart';
+import 'package:mal/widgets/character_staffs.dart';
+import '../models/anime_provider.dart';
+import '../models/anime_details_model.dart';
 
 class AnimeDetailScreen extends StatefulWidget {
-  final id;
+  final int id;
   final bool updateData;
-  const AnimeDetailScreen({@required this.id, this.updateData = false});
+  const AnimeDetailScreen({this.id = 0, this.updateData = false});
 
   @override
   State<AnimeDetailScreen> createState() => _AnimeDetailScreenState();
@@ -61,7 +59,7 @@ class _AnimeDetailScreenState extends State<AnimeDetailScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
+            SizedBox(
               height: 325,
               child: Stack(
                 children: [
@@ -118,7 +116,6 @@ class _AnimeDetailScreenState extends State<AnimeDetailScreen> {
                                   '#' + details.rank.toString(),
                                   style: TextStyle(
                                     color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.bold,
                                     fontSize: 16,
                                   ),
                                 ),
@@ -132,7 +129,6 @@ class _AnimeDetailScreenState extends State<AnimeDetailScreen> {
                                   '#' + details.popularity.toString(),
                                   style: TextStyle(
                                     color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.bold,
                                     fontSize: 16,
                                   ),
                                 ),
@@ -146,7 +142,6 @@ class _AnimeDetailScreenState extends State<AnimeDetailScreen> {
                                   details.members.toString(),
                                   style: TextStyle(
                                     color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.bold,
                                     fontSize: 16,
                                   ),
                                 ),
@@ -160,7 +155,6 @@ class _AnimeDetailScreenState extends State<AnimeDetailScreen> {
                                   details.favourites.toString(),
                                   style: TextStyle(
                                     color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.bold,
                                     fontSize: 16,
                                   ),
                                 ),
