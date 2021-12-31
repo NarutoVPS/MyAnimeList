@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../models/search_provider.dart';
 
 class SearchBar extends StatelessWidget {
   const SearchBar({Key? key}) : super(key: key);
@@ -12,7 +15,8 @@ class SearchBar extends StatelessWidget {
           color: Colors.white, borderRadius: BorderRadius.circular(5)),
       child: TextField(
         onSubmitted: (String query) {
-          // print(query);
+          Provider.of<SearchProvider>(context, listen: false)
+              .updateQuery(query);
         },
         decoration: const InputDecoration(
             prefixIcon: Icon(Icons.search),
