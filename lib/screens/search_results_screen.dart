@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mal/widgets/custom_text.dart';
 import 'package:provider/provider.dart';
 
 import 'package:mal/widgets/search_bar.dart';
@@ -42,16 +43,11 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              results[i].title,
-                              style: const TextStyle(
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                            Text(results[i].type),
+                            CustomText(results[i].title, 15, true),
+                            CustomText(results[i].type, 14, true),
                           ],
                         ),
-                        Text(results[i].members.toString()),
+                        CustomText(results[i].members.toString(), 15, true),
                       ],
                     ),
                   ),

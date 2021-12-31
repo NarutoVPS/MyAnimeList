@@ -10,52 +10,54 @@ class AdditionalInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Provider.of<AnimeProvider>(context).animeDetails.title;
-    return Padding(
+    return Container(
       padding: const EdgeInsets.all(12.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const CustomText('Source', 14, false),
-                  CustomText(
-                      Provider.of<AnimeProvider>(context).animeDetails.source,
-                      15,
-                      true),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const CustomText('Studio', 14, false),
-                  CustomText(
-                      Provider.of<AnimeProvider>(context).animeDetails.studio,
-                      15,
-                      true),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const CustomText('Rating', 14, false),
-                  CustomText(
-                      Provider.of<AnimeProvider>(context).animeDetails.rating,
-                      15,
-                      true),
-                ],
-              ),
-            ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const CustomText('Source', 14, false),
+                    CustomText(
+                        Provider.of<AnimeProvider>(context).animeDetails.source,
+                        15,
+                        true),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const CustomText('Studio', 14, false),
+                    CustomText(
+                        Provider.of<AnimeProvider>(context).animeDetails.studio,
+                        15,
+                        true),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const CustomText('Rating', 14, false),
+                    CustomText(
+                        Provider.of<AnimeProvider>(context).animeDetails.rating,
+                        15,
+                        true),
+                  ],
+                ),
+              ],
+            ),
           ),
           const SizedBox(
             width: 50,
