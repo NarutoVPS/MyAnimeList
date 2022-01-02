@@ -68,17 +68,31 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
                                         children: [
                                           CustomText(
                                               results[i].title, 15, true),
-                                          CustomText(results[i].type, 14, true),
+                                          Container(
+                                            decoration: BoxDecoration(
+                                                color: Colors.amber,
+                                                borderRadius:
+                                                    BorderRadius.circular(3.0)),
+                                            padding: const EdgeInsets.all(3.0),
+                                            child: CustomText(
+                                                results[i].type, 14, true),
+                                          ),
                                         ],
                                       ),
                                       Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          CustomText(
-                                              results[i].members.toString(),
-                                              15,
-                                              true),
+                                          Row(
+                                            children: [
+                                              CustomText(
+                                                  results[i].members.toString(),
+                                                  15,
+                                                  true),
+                                              const Icon(
+                                                  Icons.people_alt_outlined)
+                                            ],
+                                          ),
                                           const Icon(Icons.favorite_outline),
                                         ],
                                       ),
