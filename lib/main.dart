@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:mal/screens/homepage.dart';
 import 'models/anime_provider.dart';
 import 'package:mal/models/top_anime_provider.dart';
+import 'models/app_state_provider.dart';
 import 'models/search_provider.dart';
 
 void main(List<String> args) {
@@ -18,6 +19,7 @@ void main(List<String> args) {
       ChangeNotifierProvider(
         create: (_) => SearchProvider(),
       ),
+      ChangeNotifierProvider(create: (_) => AppStateProvider()),
     ],
     child: const MyApp(),
   ));
