@@ -42,10 +42,12 @@ class _NavMenuState extends State<NavMenu> {
                     MaterialPageRoute(builder: (context) => const HomePage()));
               }
             },
-            child: const Icon(
+            child: Icon(
               Icons.home_outlined,
               size: 40,
-              color: Colors.black54,
+              color: currentScreen == 'Home'
+                  ? Theme.of(context).primaryColor
+                  : Colors.black54,
             ),
           ),
           GestureDetector(
@@ -59,10 +61,12 @@ class _NavMenuState extends State<NavMenu> {
                         builder: (context) => const SearchScreen()));
               }
             },
-            child: const Icon(
+            child: Icon(
               Icons.search_outlined,
               size: 40,
-              color: Colors.black54,
+              color: currentScreen == 'Search'
+                  ? Theme.of(context).primaryColor
+                  : Colors.black54,
             ),
           ),
           const Icon(

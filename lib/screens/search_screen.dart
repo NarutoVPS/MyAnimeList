@@ -25,6 +25,7 @@ class _SearchScreenState extends State<SearchScreen> {
     // print(Provider.of<TopAnimeProvider>(context, listen: false).t);
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Theme.of(context).primaryColor,
         title: const SearchBar(),
       ),

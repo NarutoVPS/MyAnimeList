@@ -36,6 +36,7 @@ class _HomePageState extends State<HomePage> {
         Provider.of<AnimeProvider>(context).upComingTitles;
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: const Color(0xff2e51a2),
         title: const Text(
           'MAL',
