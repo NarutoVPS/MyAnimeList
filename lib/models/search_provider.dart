@@ -26,7 +26,8 @@ class SearchProvider extends ChangeNotifier {
       _searchResults.add(AnimeTitle(
         id: curr['mal_id'] ?? 0,
         title: curr['title'] ?? 'NA',
-        imgUrl: curr['image_url'] ?? '',
+        imgUrl: curr['image_url'] ??
+            'https://miro.medium.com/max/700/0*H3jZONKqRuAAeHnG.jpg',
         members: curr['members'] ?? 0,
         type: curr['type'] ?? 'NA',
         synopsis: curr['synopsis'] ?? '...',

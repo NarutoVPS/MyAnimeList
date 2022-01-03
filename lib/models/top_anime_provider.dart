@@ -36,9 +36,10 @@ class TopAnimeProvider extends ChangeNotifier {
       }
       for (int i = 0; i < n; i++) {
         data.add(BasicAnimeInfo(
-          resJson[i]['mal_id'],
-          resJson[i]['title'],
-          resJson[i]['image_url'],
+          resJson[i]['mal_id'] ?? 0,
+          resJson[i]['title'] ?? 'NA',
+          resJson[i]['image_url'] ??
+              'https://miro.medium.com/max/700/0*H3jZONKqRuAAeHnG.jpg',
         ));
       }
     }

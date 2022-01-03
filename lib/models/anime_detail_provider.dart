@@ -31,13 +31,15 @@ class AnimeDetailProvider extends ChangeNotifier {
     _upComing.clear();
     for (var element in resJson) {
       _upComing.add(AnimeTitle(
-          id: element['mal_id'],
-          title: element['title'],
-          rank: element['rank'],
-          url: element['url'],
-          imgUrl: element['image_url'],
-          members: element['members'],
-          startDate: element['start_date']));
+        id: element['mal_id'] ?? 0,
+        title: element['title'] ?? 'NA',
+        rank: element['rank'] ?? 0,
+        url: element['url'] ?? '',
+        imgUrl: element['image_url'] ??
+            'https://miro.medium.com/max/700/0*H3jZONKqRuAAeHnG.jpg',
+        members: element['members'] ?? 0,
+        startDate: element['start_date'] ?? '',
+      ));
     }
     notifyListeners();
   }
@@ -51,7 +53,8 @@ class AnimeDetailProvider extends ChangeNotifier {
     _detail = AnimeDetails(
       title: resJson['title'] ?? '',
       id: resJson['mal_id'] ?? 0,
-      imgUrl: resJson['image_url'],
+      imgUrl: resJson['image_url'] ??
+          'https://miro.medium.com/max/700/0*H3jZONKqRuAAeHnG.jpg',
       rating: resJson['rating'] ?? 0,
       rank: resJson['rank'] ?? 0,
       score: resJson['score'] ?? 0.0,
@@ -96,9 +99,10 @@ class AnimeDetailProvider extends ChangeNotifier {
         n = resJson['characters'].length;
       }
       for (int i = 0; i < n; i++) {
-        String characterName = resJson['characters'][i]['name'];
+        String characterName = resJson['characters'][i]['name'] ?? 'NA';
         String actorName;
-        String characterImgUrl = resJson['characters'][i]['image_url'];
+        String characterImgUrl = resJson['characters'][i]['image_url'] ??
+            'https://miro.medium.com/max/700/0*H3jZONKqRuAAeHnG.jpg';
         String actorImgUrl;
         try {
           actorImgUrl =
