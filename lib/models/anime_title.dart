@@ -8,6 +8,7 @@ class AnimeTitle {
   int members;
   String startDate;
   String type;
+  String synopsis;
 
   AnimeTitle({
     this.id = 0,
@@ -19,5 +20,6 @@ class AnimeTitle {
     this.members = 0,
     this.startDate = '',
     this.type = 'NA',
+    this.synopsis = '...',
   });
 }

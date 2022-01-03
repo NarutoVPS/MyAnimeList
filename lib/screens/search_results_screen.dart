@@ -39,7 +39,7 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
                                   updateData: true,
                                 ))),
                     child: Container(
-                      margin: const EdgeInsets.only(left: 8.0),
+                      margin: const EdgeInsets.all(8.0),
                       color: Colors.white,
                       child: Column(
                         children: [
@@ -50,11 +50,15 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
                                 results[i].imgUrl,
                                 height: 150,
                                 width: 100,
-                                fit: BoxFit.cover,
+                                // fit: BoxFit.cover,
                               ),
                               Flexible(
                                 child: Container(
-                                  padding: const EdgeInsets.all(12.0),
+                                  padding: const EdgeInsets.only(
+                                    left: 12.0,
+                                    top: 8.0,
+                                    bottom: 8.0,
+                                  ),
                                   height: 150,
                                   child: Column(
                                     mainAxisAlignment:
@@ -79,6 +83,14 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
                                           ),
                                         ],
                                       ),
+                                      Text(
+                                        results[i].synopsis,
+                                        maxLines: 2,
+                                        style: const TextStyle(
+                                          fontSize: 12,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
                                       Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
@@ -86,8 +98,11 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
                                           Row(
                                             children: [
                                               CustomText(
-                                                  results[i].members.toString(),
-                                                  15,
+                                                  results[i]
+                                                          .members
+                                                          .toString() +
+                                                      ' ',
+                                                  14,
                                                   true),
                                               const Icon(
                                                   Icons.people_alt_outlined)
@@ -102,9 +117,9 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
                               ),
                             ],
                           ),
-                          const Divider(
-                            color: Colors.black,
-                          ),
+                          // const Divider(
+                          //   color: Colors.black,
+                          // ),
                         ],
                       ),
                     ),

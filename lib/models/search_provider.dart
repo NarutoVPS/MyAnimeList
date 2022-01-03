@@ -29,6 +29,7 @@ class SearchProvider extends ChangeNotifier {
         imgUrl: curr['image_url'] ?? '',
         members: curr['members'] ?? 0,
         type: curr['type'] ?? 'NA',
+        synopsis: curr['synopsis'] ?? '...',
       ));
     }
     // }
