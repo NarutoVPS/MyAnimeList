@@ -186,7 +186,7 @@ class _AnimeDetailScreenState extends State<AnimeDetailScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(details.type),
-                  Text(details.airing ? 'Airing' : 'Not Aired'),
+                  Text(details.status),
                   Text(details.duration),
                 ],
               ),

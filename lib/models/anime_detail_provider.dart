@@ -64,6 +64,7 @@ class AnimeDetailProvider extends ChangeNotifier {
       trailerUrl: resJson['trailer_url'] ?? '',
       source: resJson['source'] ?? '',
       aired: resJson['aired']['string'] ?? '',
+      status: resJson['status'] ?? 'NA',
     );
     try {
       _detail.studio = resJson['studios'][0]['name'];

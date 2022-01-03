@@ -6,7 +6,7 @@ class AnimeDetails {
   int? rank;
   String trailerUrl;
   String type;
-  String? status;
+  String status;
   String duration;
   int? episodes;
   String source;
@@ -28,7 +28,7 @@ class AnimeDetails {
     this.rank = 0,
     this.trailerUrl = '',
     this.type = '',
-    this.status = '',
+    this.status = 'NA',
     this.duration = '',
     this.episodes = 0,
     this.source = '',
