@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../models/anime_provider.dart';
+import '../models/anime_detail_provider.dart';
 import '../models/anime_title.dart';
 import '../widgets/anime_tile.dart';
 import 'anime_detail_screen.dart';
@@ -18,22 +18,23 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    Provider.of<AnimeProvider>(context, listen: false).fetchUpcomingTitles();
+    Provider.of<AnimeDetailProvider>(context, listen: false)
+        .fetchUpcomingTitles();
   }
 
   void onTitleClick(id) {
-    Provider.of<AnimeProvider>(context, listen: false)
+    Provider.of<AnimeDetailProvider>(context, listen: false)
         .updateCurrentSelectedTitle(id);
     Navigator.of(context).push(MaterialPageRoute(
         builder: (context) => AnimeDetailScreen(
-            id: Provider.of<AnimeProvider>(context, listen: false)
+            id: Provider.of<AnimeDetailProvider>(context, listen: false)
                 .currentSelectedTitle)));
   }
 
   @override
   Widget build(BuildContext context) {
     List<AnimeTitle> upComingAnimes =
-        Provider.of<AnimeProvider>(context).upComingTitles;
+        Provider.of<AnimeDetailProvider>(context).upComingTitles;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -48,7 +49,7 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
               onPressed: () {
-                Provider.of<AnimeProvider>(context, listen: false)
+                Provider.of<AnimeDetailProvider>(context, listen: false)
                     .fetchUpcomingTitles();
               },
               icon: const Icon(Icons.refresh)),

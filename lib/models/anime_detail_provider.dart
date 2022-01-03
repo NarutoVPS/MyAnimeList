@@ -6,7 +6,7 @@ import 'package:mal/models/anime_details_model.dart';
 import 'character_staff_model.dart';
 import 'anime_title.dart';
 
-class AnimeProvider extends ChangeNotifier {
+class AnimeDetailProvider extends ChangeNotifier {
   final List<AnimeTitle> _upComing = [];
   AnimeDetails _detail = AnimeDetails();
   int _currentSelectedTitle = 0;

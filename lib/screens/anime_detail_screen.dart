@@ -4,7 +4,7 @@ import 'package:expandable_text/expandable_text.dart';
 
 import 'package:mal/widgets/additional_info.dart';
 import 'package:mal/widgets/character_staffs.dart';
-import '../models/anime_provider.dart';
+import '../models/anime_detail_provider.dart';
 import '../models/anime_details_model.dart';
 
 class AnimeDetailScreen extends StatefulWidget {
@@ -22,14 +22,14 @@ class _AnimeDetailScreenState extends State<AnimeDetailScreen> {
   void initState() {
     super.initState();
     if (widget.updateData) {
-      Provider.of<AnimeProvider>(context, listen: false)
+      Provider.of<AnimeDetailProvider>(context, listen: false)
           .updateCurrentSelectedTitle(widget.id);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    details = Provider.of<AnimeProvider>(context).animeDetails;
+    details = Provider.of<AnimeDetailProvider>(context).animeDetails;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
