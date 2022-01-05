@@ -1,16 +1,66 @@
-# mal
+# MyAnimeList-Clone
 
-A new Flutter project.
+> Clone of popular MyAnimeList App.
 
-## Getting Started
+## Table of Contents
 
-This project is a starting point for a Flutter application.
+-   [How To Use](#how-to-use)
+-   [Contributing](#contributing)
+-   [Credits](#credits)
+-   [License](#license)
 
-A few resources to get you started if this is your first Flutter project:
+Home                      |  Search
+:------------------------:|:-------------------------:
+![](screenshot/home.jpg)  |  ![](screenshot/search.jpg)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## How To Use
+
+> Make sure you have setup **flutter** in your system.
+> Clone the repository, open terminal in the diretory and type the following command
+
+```shell
+$ flutter pub get
+$ flutter run
+```
+
+> To get apk file, run
+
+```shell
+$ flutter build apk
+```
+
+---
+
+## Contributing
+
+> To contribute
+
+### Step 1
+
+-   **Option 1**
+
+    -   🍴 Fork this repo!
+
+-   **Option 2**
+    -   👯 Clone this repo to your local machine using `https://github.com/NarutoVPS/Envoy.git`
+
+### Step 2
+
+-   ⛓ Create a new branch with meaningful name
+
+## Step 3
+
+-   **Do your Stuff!** 🔨🔨🔨
+
+### Step 4
+
+-   🔃 Create a new pull request
+
+---
+
+## License
+
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
+
+-   **[MIT license](http://opensource.org/licenses/mit-license.php)**
