@@ -13,6 +13,10 @@ Home                      |  Search
 :------------------------:|:-------------------------:
 ![](screenshot/home.jpg)  |  ![](screenshot/search.jpg)
 
+Search Result                      |  Anime Details
+:---------------------------------:|:----------------------------:
+![](screenshot/search_result.jpg)  |  ![](screenshot/detail.jpg)
+
 
 ## How To Use
 
