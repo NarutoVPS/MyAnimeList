@@ -6,7 +6,6 @@
 
 -   [How To Use](#how-to-use)
 -   [Contributing](#contributing)
--   [Credits](#credits)
 -   [License](#license)
 
 Home                      |  Search
@@ -21,7 +20,7 @@ Search Result                      |  Anime Details
 ## How To Use
 
 > Make sure you have setup **flutter** in your system.
-> Clone the repository, open terminal in the diretory and type the following command
+> Clone the repository, open terminal in the diretory and type the following commands
 
 ```shell
 $ flutter pub get
@@ -47,7 +46,7 @@ $ flutter build apk
     -   🍴 Fork this repo!
 
 -   **Option 2**
-    -   👯 Clone this repo to your local machine using `https://github.com/NarutoVPS/mal.git`
+    -   👯 Clone this repo to your local machine using `https://github.com/NarutoVPS/MyAnimeList.git`
 
 ### Step 2
 
