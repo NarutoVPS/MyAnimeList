@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mal/widgets/custom_text.dart';
 import 'package:provider/provider.dart';
 import 'package:expandable_text/expandable_text.dart';
 
@@ -208,8 +209,18 @@ class _AnimeDetailScreenState extends State<AnimeDetailScreen> {
             // ),
             const AdditionalInfo(),
             const CharacterStaffs(),
+            details.openingThemes.length > 10
+                ? const Padding(
+                    padding: EdgeInsets.only(left: 12.0),
+                    child: CustomText('Opening Theme', 16, false),
+                  )
+                : Container(),
             Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: const EdgeInsets.only(
+                left: 30,
+                right: 12,
+                bottom: 12,
+              ),
               child: ExpandableText(
                 details.openingThemes,
                 expandText: 'Show More',
@@ -218,8 +229,17 @@ class _AnimeDetailScreenState extends State<AnimeDetailScreen> {
                 linkColor: Theme.of(context).primaryColor,
               ),
             ),
+            details.openingThemes.length > 10
+                ? const Padding(
+                    padding: EdgeInsets.only(left: 12.0),
+                    child: CustomText('Ending Theme', 16, false),
+                  )
+                : Container(),
             Padding(
-              padding: const EdgeInsets.only(left: 12.0, right: 12.0),
+              padding: const EdgeInsets.only(
+                left: 30.0,
+                right: 12.0,
+              ),
               child: ExpandableText(
                 details.endingThemes,
                 expandText: 'Show More',
