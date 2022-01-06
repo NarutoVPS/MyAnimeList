@@ -15,7 +15,7 @@ class _CharacterStaffsState extends State<CharacterStaffs> {
     final lst = Provider.of<AnimeDetailProvider>(context).characterStafflist;
     return Container(
       padding: const EdgeInsets.only(left: 7, top: 12, bottom: 12),
-      height: 500,
+      height: 340,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: lst.length,

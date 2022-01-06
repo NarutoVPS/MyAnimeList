@@ -80,6 +80,12 @@ class AnimeDetailProvider extends ChangeNotifier {
     } catch (e) {
       _detail.licensors = ['Unkonwn'];
     }
+    for (var e in resJson['ending_themes']) {
+      _detail.openingThemes += '\n$e';
+    }
+    for (var e in resJson['ending_themes']) {
+      _detail.endingThemes += '\n$e';
+    }
     notifyListeners();
   }
 

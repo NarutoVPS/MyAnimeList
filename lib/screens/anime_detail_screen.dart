@@ -58,6 +58,7 @@ class _AnimeDetailScreenState extends State<AnimeDetailScreen> {
       ),
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
               height: 325,
@@ -195,10 +196,10 @@ class _AnimeDetailScreenState extends State<AnimeDetailScreen> {
               padding: const EdgeInsets.all(12.0),
               child: ExpandableText(
                 details.synopsis,
-                expandText: 'Show more',
-                collapseText: 'Show less',
+                expandText: 'Show More',
+                collapseText: 'Show Less',
                 maxLines: 4,
-                linkColor: Colors.blue,
+                linkColor: Theme.of(context).primaryColor,
               ),
             ),
             // Padding(
@@ -207,6 +208,26 @@ class _AnimeDetailScreenState extends State<AnimeDetailScreen> {
             // ),
             const AdditionalInfo(),
             const CharacterStaffs(),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: ExpandableText(
+                details.openingThemes,
+                expandText: 'Show More',
+                collapseText: 'Show Less',
+                maxLines: 7,
+                linkColor: Theme.of(context).primaryColor,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 12.0, right: 12.0),
+              child: ExpandableText(
+                details.endingThemes,
+                expandText: 'Show More',
+                collapseText: 'Show Less',
+                maxLines: 7,
+                linkColor: Theme.of(context).primaryColor,
+              ),
+            ),
           ],
         ),
       ),

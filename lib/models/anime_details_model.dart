@@ -19,6 +19,8 @@ class AnimeDetails {
   String synopsis;
   List<String> licensors;
   String studio;
+  String openingThemes;
+  String endingThemes;
 
   AnimeDetails({
     this.id = 0,
@@ -41,5 +43,7 @@ class AnimeDetails {
     this.synopsis = '',
     this.licensors = const ['NA'],
     this.studio = '',
+    this.openingThemes = '',
+    this.endingThemes = '',
   });
 }
