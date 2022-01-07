@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mal/widgets/homepage_skeleton.dart';
 import 'package:provider/provider.dart';
 
 import '../models/anime_detail_provider.dart';
@@ -15,11 +16,20 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late bool _isloading;
   @override
   void initState() {
-    super.initState();
     Provider.of<AnimeDetailProvider>(context, listen: false)
         .fetchUpcomingTitles();
+
+    _isloading = true;
+    Future.delayed(const Duration(seconds: 2), () {
+      setState(() {
+        _isloading = false;
+      });
+    });
+
+    super.initState();
   }
 
   void onTitleClick(id) {
@@ -60,19 +70,25 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             Expanded(
-              child: ListView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  itemCount: upComingAnimes.length,
-                  itemBuilder: (context, i) {
-                    return GestureDetector(
-                      onTap: () => onTitleClick(upComingAnimes[i].id),
-                      child: AnimeTile(
-                          upComingAnimes[i].title,
-                          upComingAnimes[i].imgUrl,
-                          upComingAnimes[i].members,
-                          upComingAnimes[i].startDate),
-                    );
-                  }),
+              child: _isloading
+                  ? ListView.builder(
+                      itemCount: 10,
+                      itemBuilder: (context, i) {
+                        return const HomePageSkeleton();
+                      })
+                  : ListView.builder(
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: upComingAnimes.length,
+                      itemBuilder: (context, i) {
+                        return GestureDetector(
+                          onTap: () => onTitleClick(upComingAnimes[i].id),
+                          child: AnimeTile(
+                              upComingAnimes[i].title,
+                              upComingAnimes[i].imgUrl,
+                              upComingAnimes[i].members,
+                              upComingAnimes[i].startDate),
+                        );
+                      }),
             ),
             const NavMenu(),
           ],

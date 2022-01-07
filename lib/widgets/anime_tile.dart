@@ -25,6 +25,7 @@ class AnimeTile extends StatelessWidget {
               CircleAvatar(
                 radius: 35,
                 backgroundImage: NetworkImage(imgUrl),
+                backgroundColor: Colors.black.withOpacity(0.04),
               ),
               Expanded(
                 child: Container(
