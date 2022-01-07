@@ -17,6 +17,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late bool _isloading;
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
   @override
   void initState() {
     Provider.of<AnimeDetailProvider>(context, listen: false)
@@ -46,6 +48,7 @@ class _HomePageState extends State<HomePage> {
     List<AnimeTitle> upComingAnimes =
         Provider.of<AnimeDetailProvider>(context).upComingTitles;
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: const Color(0xff2e51a2),
@@ -56,14 +59,31 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         centerTitle: true,
-        actions: [
-          IconButton(
-              onPressed: () {
-                Provider.of<AnimeDetailProvider>(context, listen: false)
-                    .fetchUpcomingTitles();
-              },
-              icon: const Icon(Icons.refresh)),
-        ],
+        leading: IconButton(
+          onPressed: () {
+            _scaffoldKey.currentState!.openDrawer();
+          },
+          icon: const Icon(Icons.account_circle),
+        ),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: const <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Color(0xff2e51a2),
+              ),
+              child: Text(
+                'Account',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
       body: Container(
         margin: const EdgeInsets.only(top: 8.0),
