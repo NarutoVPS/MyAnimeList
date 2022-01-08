@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mal/widgets/homepage_skeleton.dart';
 import 'package:provider/provider.dart';
 
 import '../models/anime_detail_provider.dart';
@@ -7,6 +6,8 @@ import '../models/anime_title.dart';
 import '../widgets/anime_tile.dart';
 import 'anime_detail_screen.dart';
 import 'package:mal/widgets/nav_menu.dart';
+import 'package:mal/widgets/app_drawer.dart';
+import 'package:mal/widgets/homepage_skeleton.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -66,25 +67,7 @@ class _HomePageState extends State<HomePage> {
           icon: const Icon(Icons.account_circle),
         ),
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: const <Widget>[
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Color(0xff2e51a2),
-              ),
-              child: Text(
-                'Account',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
+      drawer: const AppDrawer(),
       body: Container(
         margin: const EdgeInsets.only(top: 8.0),
         child: Column(
