@@ -20,7 +20,7 @@ class _SearchScreenState extends State<SearchScreen> {
   void initState() {
     Provider.of<TopAnimeProvider>(context, listen: false).fetchAll();
     _isLoading = true;
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 2), () {
       setState(() {
         _isLoading = false;
       });

@@ -4,7 +4,7 @@ class InfoBar extends StatelessWidget {
   final int members;
   final String startDate;
 
-  const InfoBar(this.members, this.startDate);
+  const InfoBar(this.members, this.startDate, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -46,9 +46,9 @@ class _AnimeDetailScreenSkeletonState extends State<AnimeDetailScreenSkeleton> {
                         children: [
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
+                            children: const [
                               SkeletonContainer(15, 100),
-                              const SizedBox(
+                              SizedBox(
                                 height: 5.0,
                               ),
                               SkeletonContainer(15, 100),
@@ -59,9 +59,9 @@ class _AnimeDetailScreenSkeletonState extends State<AnimeDetailScreenSkeleton> {
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
+                            children: const [
                               SkeletonContainer(15, 100),
-                              const SizedBox(
+                              SizedBox(
                                 height: 5,
                               ),
                               SkeletonContainer(15, 100),
@@ -69,9 +69,9 @@ class _AnimeDetailScreenSkeletonState extends State<AnimeDetailScreenSkeleton> {
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
+                            children: const [
                               SkeletonContainer(15, 100),
-                              const SizedBox(
+                              SizedBox(
                                 height: 5,
                               ),
                               SkeletonContainer(15, 100),
@@ -79,9 +79,9 @@ class _AnimeDetailScreenSkeletonState extends State<AnimeDetailScreenSkeleton> {
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
+                            children: const [
                               SkeletonContainer(15, 100),
-                              const SizedBox(
+                              SizedBox(
                                 height: 5,
                               ),
                               SkeletonContainer(15, 100),
@@ -89,9 +89,9 @@ class _AnimeDetailScreenSkeletonState extends State<AnimeDetailScreenSkeleton> {
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
+                            children: const [
                               SkeletonContainer(15, 100),
-                              const SizedBox(
+                              SizedBox(
                                 height: 5,
                               ),
                               SkeletonContainer(15, 100),
@@ -195,9 +195,9 @@ class _AnimeDetailScreenSkeletonState extends State<AnimeDetailScreenSkeleton> {
                     children: [
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+                        children: const [
                           SkeletonContainer(15, 100),
-                          const SizedBox(
+                          SizedBox(
                             height: 5,
                           ),
                           SkeletonContainer(15, 100),
@@ -208,9 +208,9 @@ class _AnimeDetailScreenSkeletonState extends State<AnimeDetailScreenSkeleton> {
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+                        children: const [
                           SkeletonContainer(15, 100),
-                          const SizedBox(
+                          SizedBox(
                             height: 5,
                           ),
                           SkeletonContainer(15, 100),
@@ -221,9 +221,9 @@ class _AnimeDetailScreenSkeletonState extends State<AnimeDetailScreenSkeleton> {
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+                        children: const [
                           SkeletonContainer(15, 100),
-                          const SizedBox(
+                          SizedBox(
                             height: 5,
                           ),
                           SkeletonContainer(15, 100),
@@ -240,9 +240,9 @@ class _AnimeDetailScreenSkeletonState extends State<AnimeDetailScreenSkeleton> {
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+                      children: const [
                         SkeletonContainer(15, 100),
-                        const SizedBox(
+                        SizedBox(
                           height: 5,
                         ),
                         SkeletonContainer(15, 100),
@@ -253,9 +253,9 @@ class _AnimeDetailScreenSkeletonState extends State<AnimeDetailScreenSkeleton> {
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+                      children: const [
                         SkeletonContainer(15, 100),
-                        const SizedBox(
+                        SizedBox(
                           height: 5,
                         ),
                         SkeletonContainer(15, 100),
@@ -266,9 +266,9 @@ class _AnimeDetailScreenSkeletonState extends State<AnimeDetailScreenSkeleton> {
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+                      children: const [
                         SkeletonContainer(15, 100),
-                        const SizedBox(
+                        SizedBox(
                           height: 5,
                         ),
                         SkeletonContainer(15, 100),
@@ -289,9 +289,9 @@ class _AnimeDetailScreenSkeletonState extends State<AnimeDetailScreenSkeleton> {
                 return Padding(
                   padding: const EdgeInsets.only(left: 5.0, right: 5.0),
                   child: Column(
-                    children: [
+                    children: const [
                       SkeletonContainer(150, 100),
-                      const SizedBox(
+                      SizedBox(
                         height: 10,
                       ),
                       SkeletonContainer(150, 100),

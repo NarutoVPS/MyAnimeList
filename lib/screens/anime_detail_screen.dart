@@ -12,7 +12,11 @@ import '../models/anime_details_model.dart';
 class AnimeDetailScreen extends StatefulWidget {
   final int id;
   final bool updateData;
-  const AnimeDetailScreen({this.id = 0, this.updateData = false});
+  const AnimeDetailScreen({
+    this.id = 0,
+    this.updateData = false,
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<AnimeDetailScreen> createState() => _AnimeDetailScreenState();

@@ -8,7 +8,7 @@ class TopTen extends StatelessWidget {
   final List<BasicAnimeInfo> top;
   final String category;
 
-  TopTen(this.top, this.category);
+  const TopTen(this.top, this.category, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
