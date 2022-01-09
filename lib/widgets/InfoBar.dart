@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 
-class InfoBar extends StatelessWidget {
+class InfoBar extends StatefulWidget {
   final int members;
   final String startDate;
 
   const InfoBar(this.members, this.startDate, {Key? key}) : super(key: key);
 
+  @override
+  State<InfoBar> createState() => _InfoBarState();
+}
+
+class _InfoBarState extends State<InfoBar> {
+  bool _isFavourite = false;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -14,21 +20,27 @@ class InfoBar extends StatelessWidget {
       children: [
         Row(
           children: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.people_alt_outlined),
+            const Icon(
+              Icons.people_alt_outlined,
               color: Colors.black54,
             ),
+            const SizedBox(
+              width: 5.0,
+            ),
             Text(
-              members.toString(),
+              widget.members.toString(),
               style: const TextStyle(color: Colors.black87),
             ),
           ],
         ),
         IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.favorite_border_outlined),
-          color: Colors.black54,
+          onPressed: () {
+            setState(() {
+              _isFavourite = !_isFavourite;
+            });
+          },
+          icon: const Icon(Icons.favorite),
+          color: _isFavourite ? Colors.red : Colors.black54,
         )
       ],
     );
