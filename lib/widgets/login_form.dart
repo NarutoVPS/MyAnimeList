@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cool_alert/cool_alert.dart';
 
 import '../services/auth_service.dart';
 
@@ -80,6 +81,17 @@ class LoginForm extends StatelessWidget {
                             emailController.text, passwordController.text);
                         if (res == 'Signed In') {
                           Navigator.of(context).pop();
+                          CoolAlert.show(
+                            context: context,
+                            type: CoolAlertType.success,
+                            text: "Successfully Signed In!",
+                          );
+                        } else {
+                          CoolAlert.show(
+                            context: context,
+                            type: CoolAlertType.error,
+                            text: res,
+                          );
                         }
                       },
                     ),

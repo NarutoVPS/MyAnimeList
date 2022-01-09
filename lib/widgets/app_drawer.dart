@@ -40,7 +40,10 @@ class _AppDrawerState extends State<AppDrawer> {
               if (!snapshot.hasData) {
                 return GestureDetector(
                   child: const ListTile(
-                    leading: Icon(Icons.login),
+                    leading: Icon(
+                      Icons.login,
+                      color: Colors.green,
+                    ),
                     title: Text('Login'),
                   ),
                   onTap: () {
@@ -58,7 +61,10 @@ class _AppDrawerState extends State<AppDrawer> {
                     signOut();
                   },
                   child: const ListTile(
-                    leading: Icon(Icons.logout),
+                    leading: Icon(
+                      Icons.logout,
+                      color: Colors.red,
+                    ),
                     title: Text('Logout'),
                   ),
                 );
