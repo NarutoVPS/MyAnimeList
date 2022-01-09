@@ -72,6 +72,8 @@ class _AppDrawerState extends State<AppDrawer> {
                   splashColor: Colors.red,
                   onTap: () {
                     signOut();
+                    Provider.of<AppStateProvider>(context, listen: false)
+                        .updateUserID("");
                   },
                   child: const ListTile(
                     leading: Icon(
