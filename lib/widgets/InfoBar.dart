@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../models/app_state_provider.dart';
+import '../services/db_service.dart';
 
 class InfoBar extends StatefulWidget {
   final int members;
   final String startDate;
+  final Map<String, dynamic> data;
 
-  const InfoBar(this.members, this.startDate, {Key? key}) : super(key: key);
+  const InfoBar(this.members, this.startDate, this.data, {Key? key})
+      : super(key: key);
 
   @override
   State<InfoBar> createState() => _InfoBarState();
@@ -12,6 +18,8 @@ class InfoBar extends StatefulWidget {
 
 class _InfoBarState extends State<InfoBar> {
   bool _isFavourite = false;
+
+  get fav => null;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -34,7 +42,9 @@ class _InfoBarState extends State<InfoBar> {
           ],
         ),
         IconButton(
-          onPressed: () {
+          onPressed: () async {
+            await DBService().addFav(widget.data,
+                Provider.of<AppStateProvider>(context, listen: false).userID);
             setState(() {
               _isFavourite = !_isFavourite;
             });

@@ -87,6 +87,7 @@ class _HomePageState extends State<HomePage> {
                           onTap: () => onTitleClick(upComingAnimes[i].id),
                           child: AnimeTile(
                               upComingAnimes[i].title,
+                              upComingAnimes[i].id,
                               upComingAnimes[i].imgUrl,
                               upComingAnimes[i].members,
                               upComingAnimes[i].startDate),

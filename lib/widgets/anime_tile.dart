@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+
 import 'package:mal/widgets/infobar.dart';
 
 class AnimeTile extends StatelessWidget {
   final String title;
+  final int id;
   final String imgUrl;
   final int members;
   final String startDate;
 
   // ignore: use_key_in_widget_constructors
-  const AnimeTile(this.title, this.imgUrl, this.members, this.startDate);
+  const AnimeTile(
+      this.title, this.id, this.imgUrl, this.members, this.startDate);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +45,8 @@ class AnimeTile extends StatelessWidget {
                         ),
                         overflow: TextOverflow.ellipsis,
                       ),
-                      InfoBar(members, startDate),
+                      InfoBar(members, startDate,
+                          {'title': title, 'id': id, 'imgUrl': imgUrl}),
                     ],
                   ),
                 ),
