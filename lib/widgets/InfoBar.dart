@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:cool_alert/cool_alert.dart';
 
 import '../models/app_state_provider.dart';
 import '../services/db_service.dart';
@@ -43,8 +45,16 @@ class _InfoBarState extends State<InfoBar> {
         ),
         IconButton(
           onPressed: () async {
-            await DBService().addFav(widget.data,
-                Provider.of<AppStateProvider>(context, listen: false).userID);
+            if (FirebaseAuth.instance.currentUser != null) {
+              await DBService().addFav(widget.data,
+                  Provider.of<AppStateProvider>(context, listen: false).userID);
+            } else {
+              CoolAlert.show(
+                context: context,
+                type: CoolAlertType.warning,
+                text: "Please Sign In",
+              );
+            }
             setState(() {
               _isFavourite = !_isFavourite;
             });
