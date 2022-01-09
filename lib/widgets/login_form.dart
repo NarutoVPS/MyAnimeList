@@ -72,34 +72,70 @@ class LoginForm extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Theme.of(context).primaryColor,
-                      ),
-                      child: const Text(
-                        "Submit",
-                      ),
-                      onPressed: () async {
-                        final res = await signIn(
-                            emailController.text, passwordController.text);
-                        if (res == 'Signed In') {
-                          Provider.of<AppStateProvider>(context, listen: false)
-                              .updateUserID(
-                                  FirebaseAuth.instance.currentUser!.uid);
-                          Navigator.of(context).pop();
-                          CoolAlert.show(
-                            context: context,
-                            type: CoolAlertType.success,
-                            text: "Successfully Signed In!",
-                          );
-                        } else {
-                          CoolAlert.show(
-                            context: context,
-                            type: CoolAlertType.error,
-                            text: res,
-                          );
-                        }
-                      },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: Theme.of(context).primaryColor,
+                          ),
+                          child: const Text(
+                            "Login",
+                          ),
+                          onPressed: () async {
+                            final res = await signIn(
+                                emailController.text, passwordController.text);
+                            if (res == 'Signed In') {
+                              Provider.of<AppStateProvider>(context,
+                                      listen: false)
+                                  .updateUserID(
+                                      FirebaseAuth.instance.currentUser!.uid);
+                              Navigator.of(context).pop();
+                              CoolAlert.show(
+                                context: context,
+                                type: CoolAlertType.success,
+                                text: "Successfully Signed In!",
+                              );
+                            } else {
+                              CoolAlert.show(
+                                context: context,
+                                type: CoolAlertType.error,
+                                text: res,
+                              );
+                            }
+                          },
+                        ),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: Theme.of(context).primaryColor,
+                          ),
+                          child: const Text(
+                            "Sign Up",
+                          ),
+                          onPressed: () async {
+                            final res = await signUp(
+                                emailController.text, passwordController.text);
+                            if (res == 'Signed In') {
+                              Provider.of<AppStateProvider>(context,
+                                      listen: false)
+                                  .updateUserID(
+                                      FirebaseAuth.instance.currentUser!.uid);
+                              Navigator.of(context).pop();
+                              CoolAlert.show(
+                                context: context,
+                                type: CoolAlertType.success,
+                                text: "Successfully Signed In!",
+                              );
+                            } else {
+                              CoolAlert.show(
+                                context: context,
+                                type: CoolAlertType.error,
+                                text: res,
+                              );
+                            }
+                          },
+                        )
+                      ],
                     ),
                   )
                 ],

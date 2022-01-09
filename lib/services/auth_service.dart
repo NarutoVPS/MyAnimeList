@@ -16,6 +16,20 @@ signIn(String email, String password) async {
   }
 }
 
+signUp(String email, String password) async {
+  try {
+    await FirebaseAuth.instance
+        .createUserWithEmailAndPassword(email: email, password: password);
+    return "Signed In";
+  } on FirebaseAuthException catch (e) {
+    if (e.code == 'weak-password') {
+      return 'The password provided is too weak.';
+    } else if (e.code == 'email-already-in-use') {
+      return 'The account already exists for that email.';
+    }
+  }
+}
+
 Future signOut() async {
   await FirebaseAuth.instance.signOut();
 }
