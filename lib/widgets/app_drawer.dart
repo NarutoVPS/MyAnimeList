@@ -30,15 +30,18 @@ class _AppDrawerState extends State<AppDrawer> {
               ),
             ),
           ),
-          const ListTile(
-            leading: Icon(Icons.settings_outlined),
-            title: Text('App Settings'),
+          InkWell(
+            onTap: () {},
+            child: const ListTile(
+              leading: Icon(Icons.settings_outlined),
+              title: Text('App Settings'),
+            ),
           ),
           StreamBuilder(
             stream: FirebaseAuth.instance.authStateChanges(),
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
-                return GestureDetector(
+                return InkWell(
                   child: const ListTile(
                     leading: Icon(
                       Icons.login,
@@ -56,7 +59,7 @@ class _AppDrawerState extends State<AppDrawer> {
                   },
                 );
               } else {
-                return GestureDetector(
+                return InkWell(
                   onTap: () {
                     signOut();
                   },

@@ -26,7 +26,7 @@ class TopTen extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemCount: top.length,
               itemBuilder: (context, i) {
-                return GestureDetector(
+                return InkWell(
                   onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(

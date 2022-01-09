@@ -17,6 +17,7 @@ class AnimeTile extends StatelessWidget {
       padding: const EdgeInsets.only(left: 8),
       height: 90,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -47,9 +48,6 @@ class AnimeTile extends StatelessWidget {
                 ),
               ),
             ],
-          ),
-          const Divider(
-            color: Colors.black,
           ),
         ],
       ),

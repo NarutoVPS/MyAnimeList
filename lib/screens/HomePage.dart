@@ -79,11 +79,11 @@ class _HomePageState extends State<HomePage> {
                       itemBuilder: (context, i) {
                         return const HomePageSkeleton();
                       })
-                  : ListView.builder(
+                  : ListView.separated(
                       physics: const BouncingScrollPhysics(),
                       itemCount: upComingAnimes.length,
                       itemBuilder: (context, i) {
-                        return GestureDetector(
+                        return InkWell(
                           onTap: () => onTitleClick(upComingAnimes[i].id),
                           child: AnimeTile(
                               upComingAnimes[i].title,
@@ -91,7 +91,13 @@ class _HomePageState extends State<HomePage> {
                               upComingAnimes[i].members,
                               upComingAnimes[i].startDate),
                         );
-                      }),
+                      },
+                      separatorBuilder: (context, i) {
+                        return const Divider(
+                          height: 1,
+                        );
+                      },
+                    ),
             ),
             const NavMenu(),
           ],

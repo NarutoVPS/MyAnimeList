@@ -30,7 +30,7 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
             child: ListView.builder(
                 itemCount: results.length,
                 itemBuilder: (context, i) {
-                  return GestureDetector(
+                  return InkWell(
                     onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -40,7 +40,6 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
                                 ))),
                     child: Container(
                       margin: const EdgeInsets.all(8.0),
-                      color: Colors.white,
                       child: Column(
                         children: [
                           Row(
