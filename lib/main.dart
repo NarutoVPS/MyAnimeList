@@ -42,6 +42,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Poppins',
         primaryColor: const Color(0xff2e51a2),
+        inputDecorationTheme: const InputDecorationTheme(
+          labelStyle: TextStyle(
+            color: Color(0xff2e51a2),
+          ),
+        ),
       ),
       home: const HomePage(),
     );

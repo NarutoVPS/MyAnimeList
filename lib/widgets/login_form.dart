@@ -33,22 +33,48 @@ class LoginForm extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
+                  Image.asset(
+                    'assets/images/hello.png',
+                    height: 100,
+                  ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextField(
                       controller: emailController,
+                      cursorColor: Theme.of(context).primaryColor,
+                      decoration: InputDecoration(
+                        labelText: 'Email',
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Theme.of(context).primaryColor),
+                        ),
+                      ),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextField(
                       controller: passwordController,
+                      obscureText: true,
+                      cursorColor: Theme.of(context).primaryColor,
+                      decoration: InputDecoration(
+                        labelText: 'Password',
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Theme.of(context).primaryColor),
+                        ),
+                      ),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: ElevatedButton(
-                      child: const Text("Submit"),
+                      style: ElevatedButton.styleFrom(
+                        primary: Theme.of(context).primaryColor,
+                      ),
+                      child: const Text(
+                        "Submit",
+                      ),
                       onPressed: () async {
                         final res = await signIn(
                             emailController.text, passwordController.text);
