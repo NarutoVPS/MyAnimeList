@@ -1,4 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import 'package:mal/widgets/login_form.dart';
+import '../services/auth_service.dart';
 
 class AppDrawer extends StatefulWidget {
   const AppDrawer({Key? key}) : super(key: key);
@@ -8,7 +12,6 @@ class AppDrawer extends StatefulWidget {
 }
 
 class _AppDrawerState extends State<AppDrawer> {
-  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -31,69 +34,35 @@ class _AppDrawerState extends State<AppDrawer> {
             leading: Icon(Icons.settings_outlined),
             title: Text('App Settings'),
           ),
-          GestureDetector(
-            child: const ListTile(
-              leading: Icon(Icons.login),
-              title: Text('Login'),
-            ),
-            onTap: () {
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    contentPadding: const EdgeInsets.all(10.0),
-                    elevation: 10.0,
-                    scrollable: true,
-                    content: Container(
-                      height: 500,
-                      width: 500,
-                      child: Stack(
-                        children: <Widget>[
-                          Positioned(
-                            right: -1.0,
-                            top: -1.0,
-                            child: InkResponse(
-                              onTap: () {
-                                Navigator.of(context).pop();
-                              },
-                              child: const Icon(Icons.close),
-                            ),
-                          ),
-                          Center(
-                            child: Form(
-                                key: _formKey,
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: <Widget>[
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: TextFormField(),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: TextFormField(),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: ElevatedButton(
-                                        child: const Text("Submit"),
-                                        onPressed: () {
-                                          if (_formKey.currentState!
-                                              .validate()) {
-                                            _formKey.currentState!.save();
-                                          }
-                                        },
-                                      ),
-                                    )
-                                  ],
-                                )),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              );
+          StreamBuilder(
+            stream: FirebaseAuth.instance.authStateChanges(),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return GestureDetector(
+                  child: const ListTile(
+                    leading: Icon(Icons.login),
+                    title: Text('Login'),
+                  ),
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return LoginForm();
+                      },
+                    );
+                  },
+                );
+              } else {
+                return GestureDetector(
+                  onTap: () {
+                    signOut();
+                  },
+                  child: const ListTile(
+                    leading: Icon(Icons.logout),
+                    title: Text('Logout'),
+                  ),
+                );
+              }
             },
           ),
         ],
