@@ -42,6 +42,7 @@ class _AppDrawerState extends State<AppDrawer> {
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
                 return InkWell(
+                  splashColor: Colors.green,
                   child: const ListTile(
                     leading: Icon(
                       Icons.login,
@@ -60,6 +61,7 @@ class _AppDrawerState extends State<AppDrawer> {
                 );
               } else {
                 return InkWell(
+                  splashColor: Colors.red,
                   onTap: () {
                     signOut();
                   },
