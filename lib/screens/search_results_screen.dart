@@ -18,6 +18,7 @@ class SearchResultsScreen extends StatefulWidget {
 class _SearchResultsScreenState extends State<SearchResultsScreen> {
   bool _isLoading = false;
 
+  @override
   void initState() {
     _isLoading = true;
     Future.delayed(const Duration(seconds: 2), () {

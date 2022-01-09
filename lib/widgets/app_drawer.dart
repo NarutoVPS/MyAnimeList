@@ -34,7 +34,15 @@ class _AppDrawerState extends State<AppDrawer> {
                     fontSize: 24,
                   ),
                 ),
-                Text(Provider.of<AppStateProvider>(context).userID ?? ''),
+                StreamBuilder(
+                    stream: FirebaseAuth.instance.authStateChanges(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        return Text(FirebaseAuth.instance.currentUser!.uid);
+                      } else {
+                        return Container();
+                      }
+                    }),
               ],
             ),
           ),
