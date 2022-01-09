@@ -1,8 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'package:mal/widgets/login_form.dart';
 import '../services/auth_service.dart';
+import '../models/app_state_provider.dart';
 
 class AppDrawer extends StatefulWidget {
   const AppDrawer({Key? key}) : super(key: key);
@@ -22,12 +24,18 @@ class _AppDrawerState extends State<AppDrawer> {
             decoration: BoxDecoration(
               color: Theme.of(context).primaryColor,
             ),
-            child: const Text(
-              'Account',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Account',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                  ),
+                ),
+                Text(Provider.of<AppStateProvider>(context).userID ?? ''),
+              ],
             ),
           ),
           InkWell(

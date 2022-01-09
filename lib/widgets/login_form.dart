@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:cool_alert/cool_alert.dart';
+import 'package:provider/provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import '../services/auth_service.dart';
+import '../models/app_state_provider.dart';
 
 class LoginForm extends StatelessWidget {
   LoginForm({Key? key}) : super(key: key);
@@ -80,6 +83,9 @@ class LoginForm extends StatelessWidget {
                         final res = await signIn(
                             emailController.text, passwordController.text);
                         if (res == 'Signed In') {
+                          Provider.of<AppStateProvider>(context, listen: false)
+                              .updateUserID(
+                                  FirebaseAuth.instance.currentUser!.uid);
                           Navigator.of(context).pop();
                           CoolAlert.show(
                             context: context,
