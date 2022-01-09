@@ -8,6 +8,7 @@ import 'models/anime_detail_provider.dart';
 import 'package:mal/models/top_anime_provider.dart';
 import 'models/app_state_provider.dart';
 import 'models/search_provider.dart';
+import 'models/fav_anime_provider.dart';
 
 void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,7 +27,12 @@ void main(List<String> args) async {
       ChangeNotifierProvider(
         create: (_) => SearchProvider(),
       ),
-      ChangeNotifierProvider(create: (_) => AppStateProvider()),
+      ChangeNotifierProvider(
+        create: (_) => AppStateProvider(),
+      ),
+      ChangeNotifierProvider(
+        create: (_) => FavAnimeProvider(),
+      )
     ],
     child: const MyApp(),
   ));

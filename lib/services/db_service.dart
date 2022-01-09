@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class DBService {
   addFav(data, uid) async {
@@ -7,5 +8,18 @@ class DBService {
         .doc(uid)
         .collection('fav')
         .add(data);
+  }
+
+  getFavAnime() async {
+    QuerySnapshot? querySnapshot;
+    try {
+      CollectionReference _favCollection = FirebaseFirestore.instance
+          .collection('users')
+          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .collection('fav');
+      querySnapshot = await _favCollection.get();
+      // ignore: empty_catches
+    } catch (e) {}
+    return querySnapshot!.docs.map((doc) => doc.data()).toList();
   }
 }

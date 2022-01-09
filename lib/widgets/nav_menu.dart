@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../models/app_state_provider.dart';
 import 'package:mal/screens/homepage.dart';
 import 'package:mal/screens/search_screen.dart';
+import 'package:mal/screens/fav_anime_screen.dart';
 
 class NavMenu extends StatefulWidget {
   const NavMenu({Key? key}) : super(key: key);
@@ -69,10 +70,24 @@ class _NavMenuState extends State<NavMenu> {
                   : Colors.black54,
             ),
           ),
-          const Icon(
-            Icons.list_alt_outlined,
-            color: Colors.black54,
-            size: 40,
+          GestureDetector(
+            onTap: () {
+              if (currentScreen != 'Fav') {
+                Provider.of<AppStateProvider>(context, listen: false)
+                    .updateCurrentScreen('Fav');
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const FavAnimeScreen()));
+              }
+            },
+            child: Icon(
+              Icons.list_alt_outlined,
+              color: currentScreen == 'Fav'
+                  ? Theme.of(context).primaryColor
+                  : Colors.black54,
+              size: 40,
+            ),
           )
         ],
       ),
