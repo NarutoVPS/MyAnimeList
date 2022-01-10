@@ -78,8 +78,15 @@ class _AppDrawerState extends State<AppDrawer> {
               } else {
                 return InkWell(
                   splashColor: Colors.red,
-                  onTap: () {
-                    signOut();
+                  onTap: () async {
+                    showDialog(
+                      context: context,
+                      builder: (context) => const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    );
+                    await signOut();
+                    Navigator.of(context).popUntil((route) => route.isFirst);
                     Provider.of<AppStateProvider>(context, listen: false)
                         .updateUserID("");
                   },

@@ -83,8 +83,16 @@ class LoginForm extends StatelessWidget {
                             "Login",
                           ),
                           onPressed: () async {
+                            showDialog(
+                              context: context,
+                              builder: (context) => const Center(
+                                child: CircularProgressIndicator(),
+                              ),
+                            );
                             final res = await signIn(
                                 emailController.text, passwordController.text);
+                            Navigator.of(context)
+                                .popUntil((route) => route.isFirst);
                             if (res == 'Signed In') {
                               Provider.of<AppStateProvider>(context,
                                       listen: false)
