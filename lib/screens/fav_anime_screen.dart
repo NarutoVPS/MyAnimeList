@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mal/widgets/nav_menu.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -34,56 +35,66 @@ class _FavAnimeScreenState extends State<FavAnimeScreen> {
         centerTitle: true,
         elevation: 0,
       ),
-      body: FirebaseAuth.instance.currentUser == null
-          ? Container(
-              child: const Center(
-                child: Text('Not Logged In'),
-              ),
-            )
-          : ListView.separated(
-              itemCount: fav.length,
-              itemBuilder: (context, i) {
-                return InkWell(
-                  onTap: () {},
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            CircleAvatar(
-                              radius: 35,
-                              backgroundImage: NetworkImage(fav[i]['imgUrl']),
-                              backgroundColor: Colors.black.withOpacity(0.04),
-                            ),
-                            Expanded(
-                              child: Container(
-                                margin: const EdgeInsets.only(left: 10),
-                                child: Text(
-                                  fav[i]['title'],
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 16,
-                                  ),
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+      body: Column(
+        children: [
+          FirebaseAuth.instance.currentUser == null
+              ? const Expanded(
+                  child: Center(
+                    child: Text('Not Logged In'),
                   ),
-                );
-              },
-              separatorBuilder: (context, i) {
-                return const Divider(
-                  height: 1,
-                );
-              },
-            ),
+                )
+              : Expanded(
+                  child: ListView.separated(
+                    itemCount: fav.length,
+                    itemBuilder: (context, i) {
+                      return InkWell(
+                        onTap: () {},
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  CircleAvatar(
+                                    radius: 35,
+                                    backgroundImage:
+                                        NetworkImage(fav[i]['imgUrl']),
+                                    backgroundColor:
+                                        Colors.black.withOpacity(0.04),
+                                  ),
+                                  Expanded(
+                                    child: Container(
+                                      margin: const EdgeInsets.only(left: 10),
+                                      child: Text(
+                                        fav[i]['title'],
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16,
+                                        ),
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                    separatorBuilder: (context, i) {
+                      return const Divider(
+                        height: 1,
+                      );
+                    },
+                  ),
+                ),
+          const NavMenu(),
+        ],
+      ),
     );
   }
 }
