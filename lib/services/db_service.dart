@@ -11,15 +11,19 @@ class DBService {
   }
 
   getFavAnime() async {
-    QuerySnapshot? querySnapshot;
-    try {
-      CollectionReference _favCollection = FirebaseFirestore.instance
-          .collection('users')
-          .doc(FirebaseAuth.instance.currentUser!.uid)
-          .collection('fav');
-      querySnapshot = await _favCollection.get();
-      // ignore: empty_catches
-    } catch (e) {}
-    return querySnapshot!.docs.map((doc) => doc.data()).toList();
+    if (FirebaseAuth.instance.currentUser != null) {
+      QuerySnapshot? querySnapshot;
+      try {
+        CollectionReference _favCollection = FirebaseFirestore.instance
+            .collection('users')
+            .doc(FirebaseAuth.instance.currentUser!.uid)
+            .collection('fav');
+        querySnapshot = await _favCollection.get();
+        // ignore: empty_catches
+      } catch (e) {}
+      return querySnapshot!.docs.map((doc) => doc.data()).toList();
+    } else {
+      return [];
+    }
   }
 }
