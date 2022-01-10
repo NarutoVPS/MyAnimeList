@@ -39,7 +39,7 @@ class _NavMenuState extends State<NavMenu> {
               if (currentScreen != 'Home') {
                 Provider.of<AppStateProvider>(context, listen: false)
                     .updateCurrentScreen('Home');
-                Navigator.push(context,
+                Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) => const HomePage()));
               }
             },
@@ -56,7 +56,7 @@ class _NavMenuState extends State<NavMenu> {
               if (currentScreen != 'Search') {
                 Provider.of<AppStateProvider>(context, listen: false)
                     .updateCurrentScreen('Search');
-                Navigator.push(
+                Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
                         builder: (context) => const SearchScreen()));
@@ -75,7 +75,7 @@ class _NavMenuState extends State<NavMenu> {
               if (currentScreen != 'Fav') {
                 Provider.of<AppStateProvider>(context, listen: false)
                     .updateCurrentScreen('Fav');
-                Navigator.push(
+                Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
                         builder: (context) => const FavAnimeScreen()));
