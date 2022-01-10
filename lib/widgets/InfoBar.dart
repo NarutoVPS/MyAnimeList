@@ -46,8 +46,8 @@ class _InfoBarState extends State<InfoBar> {
         IconButton(
           onPressed: () async {
             if (FirebaseAuth.instance.currentUser != null) {
-              await DBService().addFav(widget.data,
-                  Provider.of<AppStateProvider>(context, listen: false).userID);
+              await DBService()
+                  .addFav(widget.data, FirebaseAuth.instance.currentUser!.uid);
             } else {
               CoolAlert.show(
                 context: context,
