@@ -7,9 +7,10 @@ class DBService {
         .collection('users')
         .doc(uid)
         .collection('fav')
-        .add(data)
-        .then((value) => print('Added'))
-        .catchError((e) => print('Failed $e'));
+        .doc(data['id'].toString())
+        .set(data)
+        .then((_) => true)
+        .catchError((e) => throw e);
   }
 
   getFavAnime() async {
