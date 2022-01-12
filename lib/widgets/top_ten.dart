@@ -17,7 +17,7 @@ class TopTen extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(left: 8, top: 8),
-          child: CustomText(category, 16, false),
+          child: CustomText(category, 16),
         ),
         Container(
           height: 200,
@@ -48,7 +48,7 @@ class TopTen extends StatelessWidget {
                         const SizedBox(
                           height: 4,
                         ),
-                        CustomText(top[i].title, 12, false),
+                        CustomText(top[i].title, 12),
                       ],
                     ),
                   ),

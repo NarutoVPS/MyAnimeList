@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mal/utils/colors.dart';
+import 'package:mal/widgets/custom_text.dart';
 import 'package:provider/provider.dart';
 import 'package:cool_alert/cool_alert.dart';
 
@@ -30,17 +32,18 @@ class _InfoBarState extends State<InfoBar> {
       children: [
         Row(
           children: [
-            const Icon(
+            Icon(
               Icons.people_alt_outlined,
-              color: Colors.black54,
+              color: Provider.of<AppStateProvider>(context).themeMode == 'LIGHT'
+                  ? TEXT_LIGHT
+                  : TEXT_DARK,
             ),
             const SizedBox(
               width: 5.0,
             ),
-            Text(
-              widget.members.toString(),
-              style: const TextStyle(color: Colors.black87),
-            ),
+            CustomText(widget.members.toString(), 14
+                // style: const TextStyle(color: Colors.black87),
+                ),
           ],
         ),
         IconButton(
@@ -68,8 +71,8 @@ class _InfoBarState extends State<InfoBar> {
               }
             }
           },
-          icon: const Icon(Icons.favorite),
-          color: _isFavourite ? Colors.red : Colors.black54,
+          icon: const Icon(Icons.favorite_border_outlined),
+          color: _isFavourite ? Colors.red : Colors.grey,
         )
       ],
     );

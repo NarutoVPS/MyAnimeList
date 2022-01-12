@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mal/utils/colors.dart';
+import 'package:mal/widgets/custom_text.dart';
 import 'package:provider/provider.dart';
 
 import 'package:mal/widgets/login_form.dart';
@@ -22,23 +24,20 @@ class _AppDrawerState extends State<AppDrawer> {
         children: <Widget>[
           DrawerHeader(
             decoration: BoxDecoration(
-              color: Theme.of(context).primaryColor,
+              color: Provider.of<AppStateProvider>(context).themeMode == 'LIGHT'
+                  ? HEADER_LIGHT
+                  : HEADER_DARK,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'Account',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                  ),
-                ),
+                const CustomText('Account', 24),
                 StreamBuilder(
                     stream: FirebaseAuth.instance.authStateChanges(),
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
-                        return Text(FirebaseAuth.instance.currentUser!.uid);
+                        return CustomText(
+                            FirebaseAuth.instance.currentUser!.uid, 14);
                       } else {
                         return Container();
                       }
@@ -47,7 +46,10 @@ class _AppDrawerState extends State<AppDrawer> {
             ),
           ),
           InkWell(
-            onTap: () {},
+            onTap: () {
+              Provider.of<AppStateProvider>(context, listen: false)
+                  .toggleTheme();
+            },
             child: const ListTile(
               leading: Icon(Icons.settings_outlined),
               title: Text('App Settings'),

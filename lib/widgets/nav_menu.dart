@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mal/utils/colors.dart';
 import 'package:provider/provider.dart';
 
 import '../models/app_state_provider.dart';
@@ -21,9 +22,11 @@ class _NavMenuState extends State<NavMenu> {
 
     return Container(
       padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
+      decoration: BoxDecoration(
+        color: Provider.of<AppStateProvider>(context).themeMode == 'LIGHT'
+            ? Colors.white
+            : HEADER_DARK,
+        boxShadow: const [
           BoxShadow(
             color: Colors.black,
             blurRadius: 5.0,
@@ -48,7 +51,7 @@ class _NavMenuState extends State<NavMenu> {
               size: 40,
               color: currentScreen == 'Home'
                   ? Theme.of(context).primaryColor
-                  : Colors.black54,
+                  : Colors.grey,
             ),
           ),
           GestureDetector(
@@ -67,7 +70,7 @@ class _NavMenuState extends State<NavMenu> {
               size: 40,
               color: currentScreen == 'Search'
                   ? Theme.of(context).primaryColor
-                  : Colors.black54,
+                  : Colors.grey,
             ),
           ),
           GestureDetector(
@@ -85,7 +88,7 @@ class _NavMenuState extends State<NavMenu> {
               Icons.list_alt_outlined,
               color: currentScreen == 'Fav'
                   ? Theme.of(context).primaryColor
-                  : Colors.black54,
+                  : Colors.grey,
               size: 40,
             ),
           )

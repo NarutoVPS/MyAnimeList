@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mal/widgets/custom_text.dart';
 
 import 'package:mal/widgets/infobar.dart';
 
@@ -16,7 +17,7 @@ class AnimeTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white70,
+      // color: Colors.white70,
       padding: const EdgeInsets.only(left: 8),
       height: 90,
       child: Column(
@@ -37,14 +38,13 @@ class AnimeTile extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        title,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16,
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                      ),
+                      CustomText(title, 16
+                          // style: const TextStyle(
+                          //   fontWeight: FontWeight.w500,
+                          //   fontSize: 16,
+                          // ),
+                          // overflow: TextOverflow.ellipsis,
+                          ),
                       InfoBar(members, startDate,
                           {'title': title, 'id': id, 'imgUrl': imgUrl}),
                     ],

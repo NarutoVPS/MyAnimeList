@@ -8,6 +8,8 @@ import 'anime_detail_screen.dart';
 import 'package:mal/widgets/nav_menu.dart';
 import 'package:mal/widgets/app_drawer.dart';
 import 'package:mal/widgets/homepage_skeleton.dart';
+import '../models/app_state_provider.dart';
+import '../utils/colors.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -52,7 +54,10 @@ class _HomePageState extends State<HomePage> {
       key: _scaffoldKey,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: const Color(0xff2e51a2),
+        backgroundColor:
+            Provider.of<AppStateProvider>(context).themeMode == 'LIGHT'
+                ? HEADER_LIGHT
+                : HEADER_DARK,
         title: const Text(
           'MAL',
           style: TextStyle(
@@ -69,7 +74,9 @@ class _HomePageState extends State<HomePage> {
       ),
       drawer: const AppDrawer(),
       body: Container(
-        margin: const EdgeInsets.only(top: 8.0),
+        color: Provider.of<AppStateProvider>(context).themeMode == 'LIGHT'
+            ? BACKGROUND_LIGHT
+            : BACKGROUND_DARK,
         child: Column(
           children: [
             Expanded(
@@ -94,8 +101,13 @@ class _HomePageState extends State<HomePage> {
                         );
                       },
                       separatorBuilder: (context, i) {
-                        return const Divider(
+                        return Divider(
                           height: 1,
+                          color: Provider.of<AppStateProvider>(context)
+                                      .themeMode ==
+                                  'LIGHT'
+                              ? TEXT_LIGHT
+                              : TEXT_DARK,
                         );
                       },
                     ),

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mal/models/app_state_provider.dart';
 import 'package:mal/screens/anime_detail_screen.dart';
+import 'package:mal/utils/colors.dart';
+import 'package:mal/widgets/custom_text.dart';
 import 'package:mal/widgets/nav_menu.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -26,7 +29,10 @@ class _FavAnimeScreenState extends State<FavAnimeScreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor:
+            Provider.of<AppStateProvider>(context).themeMode == 'LIGHT'
+                ? HEADER_LIGHT
+                : HEADER_DARK,
         title: const Text(
           'MAL',
           style: TextStyle(
@@ -36,74 +42,91 @@ class _FavAnimeScreenState extends State<FavAnimeScreen> {
         centerTitle: true,
         elevation: 0,
       ),
-      body: Column(
-        children: [
-          FirebaseAuth.instance.currentUser == null
-              ? const Expanded(
-                  child: Center(
-                    child: Text('Not Logged In'),
-                  ),
-                )
-              : Expanded(
-                  child: ListView.separated(
-                    itemCount: fav.length,
-                    itemBuilder: (context, i) {
-                      return InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (_) => AnimeDetailScreen(
-                                  id: fav[i]['id'],
-                                  updateData: true,
-                                ),
-                              ));
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  CircleAvatar(
-                                    radius: 35,
-                                    backgroundImage:
-                                        NetworkImage(fav[i]['imgUrl']),
-                                    backgroundColor:
-                                        Colors.black.withOpacity(0.04),
+      body: Container(
+        color: Provider.of<AppStateProvider>(context).themeMode == 'LIGHT'
+            ? BACKGROUND_LIGHT
+            : BACKGROUND_DARK,
+        child: Column(
+          children: [
+            FirebaseAuth.instance.currentUser == null
+                ? const Expanded(
+                    child: Center(
+                      child: CustomText('Not Logged In', 15),
+                    ),
+                  )
+                : Expanded(
+                    child: ListView.separated(
+                      itemCount: fav.length,
+                      itemBuilder: (context, i) {
+                        return InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => AnimeDetailScreen(
+                                    id: fav[i]['id'],
+                                    updateData: true,
                                   ),
-                                  Expanded(
-                                    child: Container(
-                                      margin: const EdgeInsets.only(left: 10),
-                                      child: Text(
-                                        fav[i]['title'],
-                                        style: const TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 16,
+                                ));
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 35,
+                                      backgroundImage:
+                                          NetworkImage(fav[i]['imgUrl']),
+                                      backgroundColor:
+                                          Colors.black.withOpacity(0.04),
+                                    ),
+                                    Expanded(
+                                      child: Container(
+                                        margin: const EdgeInsets.only(left: 10),
+                                        child: Text(
+                                          fav[i]['title'],
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 16,
+                                            color:
+                                                Provider.of<AppStateProvider>(
+                                                                context)
+                                                            .themeMode ==
+                                                        'LIGHT'
+                                                    ? TEXT_LIGHT
+                                                    : TEXT_DARK,
+                                          ),
+                                          overflow: TextOverflow.ellipsis,
                                         ),
-                                        overflow: TextOverflow.ellipsis,
                                       ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ],
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      );
-                    },
-                    separatorBuilder: (context, i) {
-                      return const Divider(
-                        height: 1,
-                      );
-                    },
+                        );
+                      },
+                      separatorBuilder: (context, i) {
+                        return Divider(
+                          height: 1,
+                          color: Provider.of<AppStateProvider>(context)
+                                      .themeMode ==
+                                  'LIGHT'
+                              ? TEXT_LIGHT
+                              : TEXT_DARK,
+                        );
+                      },
+                    ),
                   ),
-                ),
-          const NavMenu(),
-        ],
+            const NavMenu(),
+          ],
+        ),
       ),
     );
   }

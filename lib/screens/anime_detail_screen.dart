@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mal/models/app_state_provider.dart';
+import 'package:mal/utils/colors.dart';
 import 'package:mal/widgets/anime_detail_screen_skeleton.dart';
 import 'package:mal/widgets/custom_text.dart';
 import 'package:provider/provider.dart';
@@ -51,7 +53,10 @@ class _AnimeDetailScreenState extends State<AnimeDetailScreen> {
         ),
         elevation: 0,
         centerTitle: true,
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor:
+            Provider.of<AppStateProvider>(context).themeMode == 'LIGHT'
+                ? HEADER_LIGHT
+                : HEADER_DARK,
         actions: const [
           Padding(
             padding: EdgeInsets.all(8.0),
@@ -72,200 +77,248 @@ class _AnimeDetailScreenState extends State<AnimeDetailScreen> {
       body: _isLoading
           ? const AnimeDetailScreenSkeleton()
           : SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    height: 325,
-                    child: Stack(
-                      children: [
-                        Container(
-                          height: 100,
-                          color: Theme.of(context).primaryColor,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              margin: const EdgeInsets.all(12.0),
-                              padding: const EdgeInsets.all(10.0),
-                              decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.black45),
-                                  color: Colors.white),
-                              child: Image.network(
-                                details.imgUrl,
-                                height: 300,
-                                width: 200,
+              child: Container(
+                color:
+                    Provider.of<AppStateProvider>(context).themeMode == 'LIGHT'
+                        ? BACKGROUND_LIGHT
+                        : BACKGROUND_DARK,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 325,
+                      child: Stack(
+                        children: [
+                          Container(
+                            height: 100,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                margin: const EdgeInsets.all(12.0),
+                                padding: const EdgeInsets.all(10.0),
+                                decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.black45),
+                                    color: Colors.white),
+                                child: Image.network(
+                                  details.imgUrl,
+                                  height: 300,
+                                  width: 200,
+                                ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 12.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      const Text(
-                                        'Score',
-                                        style: TextStyle(color: Colors.white70),
-                                      ),
-                                      Text(
-                                        '⭐ ' + details.score.toString(),
-                                        style: const TextStyle(
-                                          fontSize: 22,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white70,
+                              Padding(
+                                padding: const EdgeInsets.only(right: 12.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        const Text(
+                                          'Score',
+                                          style:
+                                              TextStyle(color: Colors.white70),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    height: 15,
-                                  ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      const Text('Rank'),
-                                      Text(
-                                        '#' + details.rank.toString(),
-                                        style: TextStyle(
-                                          color: Theme.of(context).primaryColor,
-                                          fontSize: 16,
+                                        Text(
+                                          '⭐ ' + details.score.toString(),
+                                          style: const TextStyle(
+                                            fontSize: 22,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white70,
+                                          ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      const Text('Popularity'),
-                                      Text(
-                                        '#' + details.popularity.toString(),
-                                        style: TextStyle(
-                                          color: Theme.of(context).primaryColor,
-                                          fontSize: 16,
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      height: 15,
+                                    ),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        const CustomText('Rank', 14),
+                                        Text(
+                                          '#' + details.rank.toString(),
+                                          style: TextStyle(
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                            fontSize: 16,
+                                          ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      const Text('Members'),
-                                      Text(
-                                        details.members.toString(),
-                                        style: TextStyle(
-                                          color: Theme.of(context).primaryColor,
-                                          fontSize: 16,
+                                      ],
+                                    ),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        const CustomText('Popularity', 14),
+                                        Text(
+                                          '#' + details.popularity.toString(),
+                                          style: TextStyle(
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                            fontSize: 16,
+                                          ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      const Text('Favourites'),
-                                      Text(
-                                        details.favourites.toString(),
-                                        style: TextStyle(
-                                          color: Theme.of(context).primaryColor,
-                                          fontSize: 16,
+                                      ],
+                                    ),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        const CustomText('Members', 14),
+                                        Text(
+                                          details.members.toString(),
+                                          style: TextStyle(
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                            fontSize: 16,
+                                          ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                                      ],
+                                    ),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        const CustomText('Favourites', 14),
+                                        Text(
+                                          details.favourites.toString(),
+                                          style: TextStyle(
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Center(
-                      child: Text(
-                        details.title,
-                        style: const TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                            overflow: TextOverflow.ellipsis),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(8.0),
-                    margin: const EdgeInsets.only(top: 10, bottom: 10),
-                    color: Colors.black12,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Text(details.type),
-                        Text(details.status),
-                        Text(details.duration),
-                      ],
+                    Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Center(
+                        child: Text(
+                          details.title,
+                          style: TextStyle(
+                              color: Provider.of<AppStateProvider>(context)
+                                          .themeMode ==
+                                      'LIGHT'
+                                  ? TEXT_LIGHT
+                                  : TEXT_DARK,
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                              overflow: TextOverflow.ellipsis),
+                        ),
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: ExpandableText(
-                      details.synopsis,
-                      expandText: 'Show More',
-                      collapseText: 'Show Less',
-                      maxLines: 4,
-                      linkColor: Theme.of(context).primaryColor,
+                    Container(
+                      padding: const EdgeInsets.all(8.0),
+                      margin: const EdgeInsets.only(top: 10, bottom: 10),
+                      color: Colors.black12,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          CustomText(details.type, 14),
+                          CustomText(details.status, 14),
+                          CustomText(details.duration, 14),
+                        ],
+                      ),
                     ),
-                  ),
-                  // Padding(
-                  //   padding: const EdgeInsets.all(12.0),
-                  //   child: Trailer(),
-                  // ),
-                  const AdditionalInfo(),
-                  const CharacterStaffs(),
-                  details.openingThemes.length > 10
-                      ? const Padding(
-                          padding: EdgeInsets.only(left: 12.0),
-                          child: CustomText('Opening Theme', 16, false),
-                        )
-                      : Container(),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 30,
-                      right: 12,
-                      bottom: 12,
+                    Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: ExpandableText(
+                        details.synopsis,
+                        expandText: 'Show More',
+                        collapseText: 'Show Less',
+                        maxLines: 4,
+                        animation: true,
+                        animationDuration: const Duration(seconds: 1),
+                        linkColor: Theme.of(context).primaryColor,
+                        style: TextStyle(
+                          color: Provider.of<AppStateProvider>(context)
+                                      .themeMode ==
+                                  'LIGHT'
+                              ? TEXT_LIGHT
+                              : TEXT_DARK,
+                        ),
+                      ),
                     ),
-                    child: ExpandableText(
-                      details.openingThemes,
-                      expandText: 'Show More',
-                      collapseText: 'Show Less',
-                      maxLines: 7,
-                      linkColor: Theme.of(context).primaryColor,
+                    // Padding(
+                    //   padding: const EdgeInsets.all(12.0),
+                    //   child: Trailer(),
+                    // ),
+                    const AdditionalInfo(),
+                    const CharacterStaffs(),
+                    details.openingThemes.length > 10
+                        ? const Padding(
+                            padding: EdgeInsets.only(left: 12.0),
+                            child: CustomText('Opening Theme', 16),
+                          )
+                        : Container(),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        left: 30,
+                        right: 12,
+                        bottom: 12,
+                      ),
+                      child: ExpandableText(
+                        details.openingThemes,
+                        expandText: 'Show More',
+                        collapseText: 'Show Less',
+                        maxLines: 7,
+                        animation: true,
+                        animationDuration: const Duration(seconds: 1),
+                        linkColor: Theme.of(context).primaryColor,
+                        style: TextStyle(
+                          color: Provider.of<AppStateProvider>(context)
+                                      .themeMode ==
+                                  'LIGHT'
+                              ? TEXT_LIGHT
+                              : TEXT_DARK,
+                        ),
+                      ),
                     ),
-                  ),
-                  details.openingThemes.length > 10
-                      ? const Padding(
-                          padding: EdgeInsets.only(left: 12.0),
-                          child: CustomText('Ending Theme', 16, false),
-                        )
-                      : Container(),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 30.0,
-                      right: 12.0,
+                    details.openingThemes.length > 10
+                        ? const Padding(
+                            padding: EdgeInsets.only(left: 12.0),
+                            child: CustomText('Ending Theme', 16),
+                          )
+                        : Container(),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        left: 30.0,
+                        right: 12.0,
+                      ),
+                      child: ExpandableText(
+                        details.endingThemes,
+                        expandText: 'Show More',
+                        collapseText: 'Show Less',
+                        maxLines: 7,
+                        animation: true,
+                        animationDuration: const Duration(seconds: 1),
+                        linkColor: Theme.of(context).primaryColor,
+                        style: TextStyle(
+                          color: Provider.of<AppStateProvider>(context)
+                                      .themeMode ==
+                                  'LIGHT'
+                              ? TEXT_LIGHT
+                              : TEXT_DARK,
+                        ),
+                      ),
                     ),
-                    child: ExpandableText(
-                      details.endingThemes,
-                      expandText: 'Show More',
-                      collapseText: 'Show Less',
-                      maxLines: 7,
-                      linkColor: Theme.of(context).primaryColor,
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
     );

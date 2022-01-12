@@ -23,13 +23,12 @@ class AdditionalInfo extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const CustomText('Source', 14, false),
+                    const CustomText('Source', 14),
                     CustomText(
                         Provider.of<AnimeDetailProvider>(context)
                             .animeDetails
                             .source,
-                        15,
-                        true),
+                        15),
                   ],
                 ),
                 const SizedBox(
@@ -38,13 +37,12 @@ class AdditionalInfo extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const CustomText('Studio', 14, false),
+                    const CustomText('Studio', 14),
                     CustomText(
                         Provider.of<AnimeDetailProvider>(context)
                             .animeDetails
                             .studio,
-                        15,
-                        true),
+                        15),
                   ],
                 ),
                 const SizedBox(
@@ -53,13 +51,12 @@ class AdditionalInfo extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const CustomText('Rating', 14, false),
+                    const CustomText('Rating', 14),
                     CustomText(
                         Provider.of<AnimeDetailProvider>(context)
                             .animeDetails
                             .rating,
-                        15,
-                        true),
+                        15),
                   ],
                 ),
               ],
@@ -71,20 +68,19 @@ class AdditionalInfo extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const CustomText('Season\n', 14, false),
+              const CustomText('Season\n', 14),
               const SizedBox(
                 height: 10,
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const CustomText('Aired', 14, false),
+                  const CustomText('Aired', 14),
                   CustomText(
                       Provider.of<AnimeDetailProvider>(context)
                           .animeDetails
                           .aired,
-                      15,
-                      true),
+                      15),
                 ],
               ),
               const SizedBox(
@@ -93,13 +89,12 @@ class AdditionalInfo extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const CustomText('Licensors', 14, false),
+                  const CustomText('Licensors', 14),
                   CustomText(
                       Provider.of<AnimeDetailProvider>(context)
                           .animeDetails
                           .licensors[0],
-                      15,
-                      true),
+                      15),
                 ],
               ),
             ],

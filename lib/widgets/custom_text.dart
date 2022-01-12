@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../models/app_state_provider.dart';
 
 class CustomText extends StatelessWidget {
   final String text;
   final double size;
-  final bool isDark;
 
-  const CustomText(this.text, this.size, this.isDark, {Key? key})
-      : super(key: key);
+  const CustomText(this.text, this.size, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,9 @@ class CustomText extends StatelessWidget {
       text,
       style: TextStyle(
         fontSize: size,
-        color: isDark ? Colors.black : Colors.black54,
+        color: Provider.of<AppStateProvider>(context).themeMode == 'DARK'
+            ? const Color(0xffdfdfdf)
+            : Colors.black,
         overflow: TextOverflow.ellipsis,
       ),
     );
