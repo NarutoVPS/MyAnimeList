@@ -13,6 +13,17 @@ class DBService {
         .catchError((e) => throw e);
   }
 
+  removeFav(uid, id) async {
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(uid)
+        .collection('fav')
+        .doc(id)
+        .delete()
+        .then((_) => true)
+        .catchError((e) => throw e);
+  }
+
   getFavAnime() async {
     if (FirebaseAuth.instance.currentUser != null) {
       QuerySnapshot? querySnapshot;

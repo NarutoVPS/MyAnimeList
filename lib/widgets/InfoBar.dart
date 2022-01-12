@@ -45,19 +45,28 @@ class _InfoBarState extends State<InfoBar> {
         ),
         IconButton(
           onPressed: () async {
-            if (FirebaseAuth.instance.currentUser != null) {
-              await DBService()
-                  .addFav(widget.data, FirebaseAuth.instance.currentUser!.uid);
-            } else {
+            if (FirebaseAuth.instance.currentUser == null) {
               CoolAlert.show(
                 context: context,
                 type: CoolAlertType.warning,
                 text: "Please Sign In",
               );
+            } else {
+              if (!_isFavourite) {
+                await DBService().addFav(
+                    widget.data, FirebaseAuth.instance.currentUser!.uid);
+                setState(() {
+                  _isFavourite = true;
+                });
+              } else {
+                await DBService().removeFav(
+                    FirebaseAuth.instance.currentUser!.uid,
+                    widget.data['id'].toString());
+                setState(() {
+                  _isFavourite = false;
+                });
+              }
             }
-            setState(() {
-              _isFavourite = !_isFavourite;
-            });
           },
           icon: const Icon(Icons.favorite),
           color: _isFavourite ? Colors.red : Colors.black54,
