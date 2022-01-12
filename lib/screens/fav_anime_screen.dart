@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mal/screens/anime_detail_screen.dart';
 import 'package:mal/widgets/nav_menu.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -48,7 +49,16 @@ class _FavAnimeScreenState extends State<FavAnimeScreen> {
                     itemCount: fav.length,
                     itemBuilder: (context, i) {
                       return InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => AnimeDetailScreen(
+                                  id: fav[i]['id'],
+                                  updateData: true,
+                                ),
+                              ));
+                        },
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Column(
