@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mal/models/app_state_provider.dart';
+import 'package:mal/utils/colors.dart';
+import 'package:provider/provider.dart';
 
 class HomePageSkeleton extends StatelessWidget {
   const HomePageSkeleton({Key? key}) : super(key: key);
@@ -6,7 +9,9 @@ class HomePageSkeleton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white70,
+      color: Provider.of<AppStateProvider>(context).themeMode == 'LIGHT'
+          ? BACKGROUND_LIGHT
+          : Colors.grey,
       padding: const EdgeInsets.only(left: 8),
       height: 90,
       child: Column(

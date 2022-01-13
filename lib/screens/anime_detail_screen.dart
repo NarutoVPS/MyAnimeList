@@ -91,7 +91,11 @@ class _AnimeDetailScreenState extends State<AnimeDetailScreen> {
                         children: [
                           Container(
                             height: 100,
-                            color: Theme.of(context).primaryColor,
+                            color: Provider.of<AppStateProvider>(context)
+                                        .themeMode ==
+                                    'LIGHT'
+                                ? HEADER_LIGHT
+                                : HEADER_DARK,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
