@@ -1,7 +1,9 @@
+import 'package:cool_alert/cool_alert.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mal/utils/colors.dart';
 import 'package:mal/widgets/custom_text.dart';
+import 'package:mal/widgets/settings.dart';
 import 'package:provider/provider.dart';
 
 import 'package:mal/widgets/login_form.dart';
@@ -52,8 +54,12 @@ class _AppDrawerState extends State<AppDrawer> {
             ),
             InkWell(
               onTap: () {
-                Provider.of<AppStateProvider>(context, listen: false)
-                    .toggleTheme();
+                // Provider.of<AppStateProvider>(context, listen: false)
+                //     .toggleTheme();
+                showDialog(
+                  context: context,
+                  builder: (context) => const Settings(),
+                );
               },
               child: const ListTile(
                 leading: Icon(Icons.settings_outlined),
@@ -66,12 +72,12 @@ class _AppDrawerState extends State<AppDrawer> {
                 if (!snapshot.hasData) {
                   return InkWell(
                     splashColor: Colors.green,
-                    child: const ListTile(
+                    child: ListTile(
                       leading: Icon(
                         Icons.login,
-                        color: Colors.green,
+                        color: Colors.green[800],
                       ),
-                      title: Text('Login'),
+                      title: const Text('Login'),
                     ),
                     onTap: () {
                       showDialog(
@@ -85,24 +91,33 @@ class _AppDrawerState extends State<AppDrawer> {
                 } else {
                   return InkWell(
                     splashColor: Colors.red,
-                    onTap: () async {
-                      showDialog(
+                    onTap: () {
+                      CoolAlert.show(
                         context: context,
-                        builder: (context) => const Center(
-                          child: CircularProgressIndicator(),
-                        ),
+                        type: CoolAlertType.confirm,
+                        confirmBtnColor: Colors.red,
+                        showCancelBtn: true,
+                        onConfirmBtnTap: () async {
+                          showDialog(
+                            context: context,
+                            builder: (context) => const Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                          );
+                          await signOut();
+                          Navigator.of(context)
+                              .popUntil((route) => route.isFirst);
+                          Provider.of<AppStateProvider>(context, listen: false)
+                              .updateUserID("");
+                        },
                       );
-                      await signOut();
-                      Navigator.of(context).popUntil((route) => route.isFirst);
-                      Provider.of<AppStateProvider>(context, listen: false)
-                          .updateUserID("");
                     },
-                    child: const ListTile(
+                    child: ListTile(
                       leading: Icon(
                         Icons.logout,
-                        color: Colors.red,
+                        color: Colors.red[800],
                       ),
-                      title: Text('Logout'),
+                      title: const Text('Logout'),
                     ),
                   );
                 }
