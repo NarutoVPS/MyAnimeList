@@ -5,6 +5,7 @@ import 'package:mal/widgets/anime_detail_screen_skeleton.dart';
 import 'package:mal/widgets/custom_text.dart';
 import 'package:provider/provider.dart';
 import 'package:expandable_text/expandable_text.dart';
+import 'package:share_plus/share_plus.dart';
 
 import 'package:mal/widgets/additional_info.dart';
 import 'package:mal/widgets/character_staffs.dart';
@@ -57,19 +58,25 @@ class _AnimeDetailScreenState extends State<AnimeDetailScreen> {
             Provider.of<AppStateProvider>(context).themeMode == 'LIGHT'
                 ? HEADER_LIGHT
                 : HEADER_DARK,
-        actions: const [
-          Padding(
+        actions: [
+          const Padding(
             padding: EdgeInsets.all(8.0),
             child: Icon(
               Icons.favorite_border_outlined,
               size: 27,
             ),
           ),
-          Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Icon(
-              Icons.share,
-              size: 27,
+          GestureDetector(
+            onTap: () async {
+              await Share.share(
+                  'Yo check this anime \nhttps://myanimelist.net/anime/${widget.id}');
+            },
+            child: const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Icon(
+                Icons.share,
+                size: 27,
+              ),
             ),
           ),
         ],
