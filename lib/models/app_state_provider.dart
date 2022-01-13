@@ -1,9 +1,13 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/scheduler.dart';
 
 class AppStateProvider extends ChangeNotifier {
   String _currentScreen = 'Home';
   String? _userID;
-  String _themeMode = 'DARK';
+  String _themeMode =
+      SchedulerBinding.instance!.window.platformBrightness == Brightness.dark
+          ? 'DARK'
+          : 'LIGHT';
 
   get currentScreen => _currentScreen;
   get userID => _userID;
