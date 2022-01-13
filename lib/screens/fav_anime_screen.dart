@@ -42,7 +42,7 @@ class _FavAnimeScreenState extends State<FavAnimeScreen> {
         centerTitle: true,
         elevation: 0,
       ),
-      body: Container(
+      body: Ink(
         color: Provider.of<AppStateProvider>(context).themeMode == 'LIGHT'
             ? BACKGROUND_LIGHT
             : BACKGROUND_DARK,

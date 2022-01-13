@@ -46,7 +46,7 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
       ),
       body: _isLoading
           ? const SearchResultSkeleton()
-          : Container(
+          : Ink(
               color: Provider.of<AppStateProvider>(context).themeMode == 'LIGHT'
                   ? BACKGROUND_LIGHT
                   : BACKGROUND_DARK,

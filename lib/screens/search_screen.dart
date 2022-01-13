@@ -41,7 +41,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 : HEADER_DARK,
         title: const SearchBar(),
       ),
-      body: Container(
+      body: Ink(
         color: Provider.of<AppStateProvider>(context).themeMode == 'LIGHT'
             ? BACKGROUND_LIGHT
             : BACKGROUND_DARK,

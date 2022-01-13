@@ -19,7 +19,7 @@ class _AppDrawerState extends State<AppDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Container(
+      child: Ink(
         color: Provider.of<AppStateProvider>(context).themeMode == 'LIGHT'
             ? BACKGROUND_LIGHT
             : Colors.grey,

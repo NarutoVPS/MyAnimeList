@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       drawer: const AppDrawer(),
-      body: Container(
+      body: Ink(
         color: Provider.of<AppStateProvider>(context).themeMode == 'LIGHT'
             ? BACKGROUND_LIGHT
             : BACKGROUND_DARK,
