@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cool_alert/cool_alert.dart';
+import 'package:mal/utils/colors.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -16,6 +17,10 @@ class LoginForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       contentPadding: const EdgeInsets.all(10.0),
+      backgroundColor:
+          Provider.of<AppStateProvider>(context).themeMode == 'LIGHT'
+              ? BACKGROUND_LIGHT
+              : HEADER_DARK.withOpacity(0.7),
       elevation: 10.0,
       scrollable: true,
       content: SizedBox(
@@ -30,7 +35,10 @@ class LoginForm extends StatelessWidget {
                 onTap: () {
                   Navigator.of(context).pop();
                 },
-                child: const Icon(Icons.close),
+                child: const Icon(
+                  Icons.close,
+                  color: Colors.grey,
+                ),
               ),
             ),
             Center(
@@ -44,6 +52,12 @@ class LoginForm extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextField(
+                      style: TextStyle(
+                          color: Provider.of<AppStateProvider>(context)
+                                      .themeMode ==
+                                  'LIGHT'
+                              ? TEXT_LIGHT
+                              : TEXT_DARK),
                       controller: emailController,
                       cursorColor: Theme.of(context).primaryColor,
                       decoration: InputDecoration(
@@ -58,6 +72,12 @@ class LoginForm extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextField(
+                      style: TextStyle(
+                          color: Provider.of<AppStateProvider>(context)
+                                      .themeMode ==
+                                  'LIGHT'
+                              ? TEXT_LIGHT
+                              : TEXT_DARK),
                       controller: passwordController,
                       obscureText: true,
                       cursorColor: Theme.of(context).primaryColor,
